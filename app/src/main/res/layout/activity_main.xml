@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".HillaMainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtLabelResult"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:inputType="phone"
+                android:text="نتیجه پرداخت" />
+
+
+            <TextView
+                android:id="@+id/txtResult"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:padding="8dp" />
+
+        </LinearLayout>
+
+        <EditText
+            android:visibility="gone"
+            android:id="@+id/edtDate"
+            android:layout_width="200dp"
+            android:clickable="true"
+
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="4dp"
+            android:focusable="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/edtPhoneNumber"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="phone"
+                android:padding="4dp" />
+
+            <TextView
+                android:id="@+id/txtLabelPhoneNumber"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:inputType="phone"
+                android:text="شماره تلفن" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center">
+
+            <EditText
+                android:hint="ریال"
+                android:id="@+id/edtAmount"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="phone"
+                android:padding="4dp" />
+
+            <TextView
+                android:textSize="14sp"
+                android:id="@+id/txtLabelAmount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="phone"
+                android:text="مبلغ" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btnPayment"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="پرداخت" />
+
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

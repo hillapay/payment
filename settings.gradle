@@ -1,0 +1,2 @@
+include ':app', ':hillapay', ':hillapay_unity_v1.4.0_final'
+rootProject.name='HillaPaySample'
