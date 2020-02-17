@@ -1,2 +1,2 @@
-include ':app', ':hillapay', ':hillapay_v1.3.0'
+include ':app', ':hillapay'
 rootProject.name='HillaPaySample'

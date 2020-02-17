@@ -72,15 +72,15 @@ public class BankModel implements Parcelable {
         this.image = in.readString();
     }
 
-    public static final Creator<ir.hillapay.core.publicmodel.BankModel> CREATOR = new Creator<ir.hillapay.core.publicmodel.BankModel>() {
+    public static final Creator<BankModel> CREATOR = new Creator<BankModel>() {
         @Override
-        public ir.hillapay.core.publicmodel.BankModel createFromParcel(Parcel source) {
-            return new ir.hillapay.core.publicmodel.BankModel(source);
+        public BankModel createFromParcel(Parcel source) {
+            return new BankModel(source);
         }
 
         @Override
-        public ir.hillapay.core.publicmodel.BankModel[] newArray(int size) {
-            return new ir.hillapay.core.publicmodel.BankModel[size];
+        public BankModel[] newArray(int size) {
+            return new BankModel[size];
         }
     };
 

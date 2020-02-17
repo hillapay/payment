@@ -98,15 +98,15 @@ public class TransactionVerifyModel implements Parcelable {
         this.isSuccess = in.readByte() != 0;
     }
 
-    public static final Creator<ir.hillapay.core.publicmodel.TransactionVerifyModel> CREATOR = new Creator<ir.hillapay.core.publicmodel.TransactionVerifyModel>() {
+    public static final Creator<TransactionVerifyModel> CREATOR = new Creator<TransactionVerifyModel>() {
         @Override
-        public ir.hillapay.core.publicmodel.TransactionVerifyModel createFromParcel(Parcel source) {
-            return new ir.hillapay.core.publicmodel.TransactionVerifyModel(source);
+        public TransactionVerifyModel createFromParcel(Parcel source) {
+            return new TransactionVerifyModel(source);
         }
 
         @Override
-        public ir.hillapay.core.publicmodel.TransactionVerifyModel[] newArray(int size) {
-            return new ir.hillapay.core.publicmodel.TransactionVerifyModel[size];
+        public TransactionVerifyModel[] newArray(int size) {
+            return new TransactionVerifyModel[size];
         }
     };
 

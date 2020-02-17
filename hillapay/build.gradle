@@ -27,6 +27,6 @@ android {
 
 dependencies {
 
-implementation project(path: ':hillapay_v1.3.0')
+
 }
 

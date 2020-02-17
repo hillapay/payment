@@ -48,15 +48,15 @@ public class TerminalModel implements Parcelable {
         this.id = in.readString();
     }
 
-    public static final Parcelable.Creator<ir.hillapay.core.publicmodel.TerminalModel> CREATOR = new Parcelable.Creator<ir.hillapay.core.publicmodel.TerminalModel>() {
+    public static final Parcelable.Creator<TerminalModel> CREATOR = new Parcelable.Creator<TerminalModel>() {
         @Override
-        public ir.hillapay.core.publicmodel.TerminalModel createFromParcel(Parcel source) {
-            return new ir.hillapay.core.publicmodel.TerminalModel(source);
+        public TerminalModel createFromParcel(Parcel source) {
+            return new TerminalModel(source);
         }
 
         @Override
-        public ir.hillapay.core.publicmodel.TerminalModel[] newArray(int size) {
-            return new ir.hillapay.core.publicmodel.TerminalModel[size];
+        public TerminalModel[] newArray(int size) {
+            return new TerminalModel[size];
         }
     };
 

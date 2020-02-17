@@ -119,15 +119,15 @@ public class IpgCallbackModel implements Parcelable {
         this.isSuccess = in.readByte() != 0;
     }
 
-    public static final Creator<ir.hillapay.core.publicmodel.IpgCallbackModel> CREATOR = new Creator<ir.hillapay.core.publicmodel.IpgCallbackModel>() {
+    public static final Creator<IpgCallbackModel> CREATOR = new Creator<IpgCallbackModel>() {
         @Override
-        public ir.hillapay.core.publicmodel.IpgCallbackModel createFromParcel(Parcel source) {
-            return new ir.hillapay.core.publicmodel.IpgCallbackModel(source);
+        public IpgCallbackModel createFromParcel(Parcel source) {
+            return new IpgCallbackModel(source);
         }
 
         @Override
-        public ir.hillapay.core.publicmodel.IpgCallbackModel[] newArray(int size) {
-            return new ir.hillapay.core.publicmodel.IpgCallbackModel[size];
+        public IpgCallbackModel[] newArray(int size) {
+            return new IpgCallbackModel[size];
         }
     };
 

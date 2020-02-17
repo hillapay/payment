@@ -114,15 +114,15 @@ public class DirectdebitPayModel implements Parcelable {
         this.isSuccess = in.readByte() != 0;
     }
 
-    public static final Creator<ir.hillapay.core.publicmodel.DirectdebitPayModel> CREATOR = new Creator<ir.hillapay.core.publicmodel.DirectdebitPayModel>() {
+    public static final Creator<DirectdebitPayModel> CREATOR = new Creator<DirectdebitPayModel>() {
         @Override
-        public ir.hillapay.core.publicmodel.DirectdebitPayModel createFromParcel(Parcel source) {
-            return new ir.hillapay.core.publicmodel.DirectdebitPayModel(source);
+        public DirectdebitPayModel createFromParcel(Parcel source) {
+            return new DirectdebitPayModel(source);
         }
 
         @Override
-        public ir.hillapay.core.publicmodel.DirectdebitPayModel[] newArray(int size) {
-            return new ir.hillapay.core.publicmodel.DirectdebitPayModel[size];
+        public DirectdebitPayModel[] newArray(int size) {
+            return new DirectdebitPayModel[size];
         }
     };
 }
