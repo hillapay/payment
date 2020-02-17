@@ -69,14 +69,14 @@ public class HillaPaySdk {
             @Override
             public void paymentResult(IpgCallbackModel ipgModel, boolean isSuccess) {
                 ir.hillapay.pay.sdk.IpgCallbackModel ipgCallbackModel = new ir.hillapay.pay.sdk.IpgCallbackModel(
-                        ipgModel.transactionId,
-                        ipgModel.orderId,
-                        ipgModel.statusCode,
-                        ipgModel.statusDescription,
-                        ipgModel.packageName,
-                        ipgModel.returnAmount,
-                        ipgModel.returnRrn,
-                        ipgModel.isSuccess);
+                        ipgModel.getTransactionId(),
+                        ipgModel.getOrderId(),
+                        ipgModel.getStatusCode(),
+                        ipgModel.getStatusDescription(),
+                        ipgModel.getPackageName(),
+                        ipgModel.getReturnAmount(),
+                        ipgModel.getReturnRrn(),
+                        ipgModel.isSuccess());
                 sdkListener.paymentResult(ipgCallbackModel, isSuccess);
             }
 
@@ -84,44 +84,44 @@ public class HillaPaySdk {
             public void verifyResult(TransactionVerifyModel verifyModel, boolean isSuccess) {
 
                 BankModel bankModel = new BankModel(
-                        verifyModel.getBank().id,
-                        verifyModel.getBank().withdrawalType,
-                        verifyModel.getBank().title,
-                        verifyModel.getBank().image);
+                        verifyModel.getBank().getId(),
+                        verifyModel.getBank().getWithdrawalType(),
+                        verifyModel.getBank().getTitle(),
+                        verifyModel.getBank().getImage());
 
                 TerminalModel terminalModel=new TerminalModel(
-                        verifyModel.getTerminal().id,
-                        verifyModel.getTerminal().title);
+                        verifyModel.getTerminal().getId(),
+                        verifyModel.getTerminal().getTitle());
 
                 ir.hillapay.pay.sdk.TransactionVerifyModel transactionVerifyModel = new ir.hillapay.pay.sdk.TransactionVerifyModel(
-                        verifyModel.transactionId,
-                        verifyModel.orderId,
-                        verifyModel.card,
+                        verifyModel.getTransactionId(),
+                        verifyModel.getOrderId(),
+                        verifyModel.getCard(),
                         terminalModel,
                         bankModel,
-                        verifyModel.isSuccess);
+                        verifyModel.isSuccess());
                 sdkListener.verifyResult(transactionVerifyModel, isSuccess);
             }
 
             @Override
             public void directDebitResult(DirectdebitPayModel payModel, boolean isSuccess) {
                 BankModel bankModel = new BankModel(
-                        payModel.getBank().id,
-                        payModel.getBank().withdrawalType,
-                        payModel.getBank().title,
-                        payModel.getBank().image);
+                        payModel.getBank().getId(),
+                        payModel.getBank().getWithdrawalType(),
+                        payModel.getBank().getTitle(),
+                        payModel.getBank().getImage());
 
                 TerminalModel terminalModel=new TerminalModel(
-                        payModel.getTerminal().id,
-                        payModel.getTerminal().title);
+                        payModel.getTerminal().getId(),
+                        payModel.getTerminal().getTitle());
 
                 ir.hillapay.pay.sdk.DirectdebitPayModel directdebitPayModel = new ir.hillapay.pay.sdk.DirectdebitPayModel(
-                        payModel.transactionId,
-                        payModel.orderId,
-                        payModel.transactionAmount,
+                        payModel.getTransactionId(),
+                        payModel.getOrderId(),
+                        payModel.getTransactionAmount(),
                         terminalModel,
                         bankModel,
-                        payModel.isSuccess
+                        payModel.isSuccess()
                 );
 
                 sdkListener.directDebitResult(directdebitPayModel, isSuccess);

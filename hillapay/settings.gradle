@@ -1,2 +1,0 @@
-include  ':hillapay',':hillapay_v1.3.0'
-rootProject.name='HillaPaySample'
