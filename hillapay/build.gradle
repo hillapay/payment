@@ -26,8 +26,12 @@ android {
 }
 
 dependencies {
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
 
+}
 
-implementation files('src/main/assets/libs/hillapay_v1.3.0.aar')
+task copyLibs(type: Copy) {
+    from configurations.compile
+    into 'libs'
 }
 
