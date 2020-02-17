@@ -28,6 +28,6 @@ android {
 dependencies {
 
 
-implementation files('src/main/res/libs/hillapay_v1.3.0.aar')
+implementation files('src/main/assets/libs/hillapay_v1.3.0.aar')
 }
 
