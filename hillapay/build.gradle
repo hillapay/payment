@@ -26,7 +26,8 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
 
+
+implementation files('src/main/res/libs/hillapay_v1.3.0.aar')
 }
 
