@@ -26,8 +26,7 @@ android {
 }
 
 dependencies {
+    implementation files('libs/hillapay_v1.3.0.aar')
 
-
-implementation project(path: ':hillapay_v1.3.0')
 }
 
