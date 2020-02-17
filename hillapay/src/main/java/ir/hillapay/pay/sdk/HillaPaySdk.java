@@ -41,6 +41,8 @@ public class HillaPaySdk {
      * @param description
      * @param uid            is unique
      * @param additionalData
+     * @param sku is product code
+     * @param phoneByUser is enable get user phone
      */
     public static void payment(Activity context, String amount, String phone, String orderId,
                                String description, String uid, String additionalData, String sku,

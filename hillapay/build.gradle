@@ -26,6 +26,7 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':hillapay_unity_v1.4.0_final')
+
+implementation project(path: ':hillapay_v1.3.0')
 }
 
