@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.hillapay'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 28
@@ -25,29 +26,24 @@ android {
 
 }
 
-// Build a jar with source files.
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
+task generateMySources(type: Jar) {
     classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
 }
-
-task javadoc(type: Javadoc) {
-    failOnError  false
-    source = android.sourceSets.main.java.sourceFiles
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += configurations.compile
+task addMySourcesToAar(type: Jar) {
+    archiveName "hillapay.aar"
+    destinationDir file("build")
+    from zipTree("libs/hillapay_v1.3.0.aar")
+    from fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
 }
-
-// Build a jar with javadoc.
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
+afterEvaluate { project ->
+    project.tasks.preBuild.dependsOn generateMySources
+    project.addMySourcesToAar.dependsOn build
 }
-
 artifacts {
-    archives sourcesJar
-    archives javadocJar
+    archives addMySourcesToAar.archivePath
 }
+
 
 dependencies {
     implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
