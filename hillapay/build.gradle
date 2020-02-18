@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 //apply plugin: 'com.github.dcendents.android-maven'
-//group = 'com.github.hillapay'
+group = 'com.github.hillapay'
 apply plugin: "com.cpdroid.fat-aar"
 
 
