@@ -3,13 +3,14 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.hillapay'
 
 
-allprojects {
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
-    }
-}
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            repository url: 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath
+//        }
+//    }
+//}
+//task install(dependsOn: uploadArchives)
 
 android {
     compileSdkVersion 28
