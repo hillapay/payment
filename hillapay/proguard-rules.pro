@@ -24,8 +24,4 @@
 #-keep public class ir.hilla.rest.rest.HillaRestHttpConnection
 
 #-keep public class ir.hillapay.core.sdk.**
--keep public class ir.hillapay.core.sdk.** {public private protected *;}
-#-keep public class ir.hillapay.core.types.**
--keep public class ir.hillapay.core.types.** {public private protected *;}
-#-keep public class ir.hillapay.core.publicmodel.**
--keep public class ir.hillapay.core.publicmodel.** {public private protected *;}
+-keep public class ir.hillapay.pay.sdk.** {public private protected *;}
