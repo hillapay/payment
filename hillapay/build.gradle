@@ -2,6 +2,15 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.hillapay'
 
+
+allprojects {
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
 android {
     compileSdkVersion 28
 
@@ -27,7 +36,8 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    implementation(name:'hillapay_v1.3.0', ext:'aar')
+//    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
 
 }
 
