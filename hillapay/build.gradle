@@ -1,23 +1,15 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.hillapay'
+//apply plugin: 'com.github.dcendents.android-maven'
+//group = 'com.github.hillapay'
+apply plugin: "com.cpdroid.fat-aar"
 
 
-//uploadArchives {
-//    repositories {
-//        mavenDeployer {
-//            repository url: 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath
-//        }
-//    }
-//}
-//task install(dependsOn: uploadArchives)
 
 android {
     compileSdkVersion 28
 
 
     defaultConfig {
-        archivesBaseName = 'maven-aar'
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
@@ -37,8 +29,7 @@ android {
 }
 
 dependencies {
-//    implementation(name:'hillapay_v1.3.0', ext:'aar')
-    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    embedded fileTree(dir: 'libs', include: ['*.aar'])
 
 }
 
