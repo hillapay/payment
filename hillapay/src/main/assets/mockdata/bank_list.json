@@ -1,0 +1,41 @@
+{
+  "status": {
+    "status": "200",
+    "message": "Done",
+    "date": 1574167805,
+    "request_id": "hFcbJ14157416780494vTmcD"
+  },
+  "result_directdebit_bank_list": [
+    {
+      "id": "211",
+      "withdrawal_type": "test",
+      "title": "سامان",
+      "img": "saman"
+    },
+    {
+      "id": "211",
+      "withdrawal_type": "test",
+      "title": "ملت",
+      "img": "mellat"
+    },
+    {
+      "id": "211",
+      "withdrawal_type": "test",
+      "title": "تجارت",
+      "img": "tejarat"
+    },
+    {
+      "id": "211",
+      "withdrawal_type": "test",
+      "title": "ملی",
+      "img": "melli"
+    },
+    {
+      "id": "211",
+      "withdrawal_type": "test",
+      "title": "سپه",
+      "img": "sepah"
+    }
+  ],
+  "debug": {}
+}

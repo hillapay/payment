@@ -1,0 +1,23 @@
+{
+  "status": {
+    "status": "200",
+    "message": "Done",
+    "date": 1574167805,
+    "request_id": "hFcbJ14157416780494vTmcD"
+  },
+  "result_transaction_send": {
+    "transaction_id": "677041574167804713",
+    "transaction_url": "https://api.hillapay.ir/sdk/v2/pay?transaction_id=677041574167804713",
+    "terminal_title": "شیرینی اسکمو",
+    "terminal_id": "281218",
+    "amount": 10,
+    "mobile": "00989126705277",
+    "wage": 0,
+    "description": "1",
+    "mpl": true,
+    "ipg": true,
+    "directdebit": true,
+    "wallet": true
+  },
+  "debug": {}
+}

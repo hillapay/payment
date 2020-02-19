@@ -1,3 +1,68 @@
 <resources>
-    <string name="app_name">HillaRest</string>
+    <string name="app_name">Hillapay</string>
+    <string name="portal_selection">انتخاب درگاه بانکی</string>
+    <string name="exit">خروج</string>
+    <string name="terminal_name">نام ترمینال</string>
+    <string name="app_label">اپلیکیشن</string>
+    <string name="terminal_number">شماره ترمینال</string>
+    <string name="colon">:</string>
+    <string name="price">مبلغ</string>
+    <string name="the_amount_payable">مبلغ قابل پرداخت</string>
+    <string name="phone">شماره همراه:</string>
+    <string name="transaction">شماره تراکنش</string>
+    <string name="bank_port_number">شماره درگاه بانکی</string>
+    <string name="in_app">درون برنامه</string>
+    <string name="bank_portal">درگاه بانکی</string>
+    <string name="success">عملیات با موفقیت انجام شد</string>
+    <string name="failed">عملیات ناموفق</string>
+    <string name="back">بازگشت</string>
+    <string name="next_step">مرحله بعد</string>
+    <string name="in_app_payment">پرداخت درون برنامه ای</string>
+    <string name="payment">پرداخت</string>
+    <string name="portal_selection_please">یکی از روش های پرداخت را انتخاب کنید</string>
+    <string name="file_download">دریافت فایل</string>
+    <string name="cart_number">شماره کارت</string>
+    <string name="cvv2">CVV2</string>
+    <string name="second_card_password">رمز دوم کارت</string>
+    <string name="month">ماه</string>
+    <string name="year">سال</string>
+    <string name="card_expiration_date">تاریخ انقضای کارت</string>
+
+
+    <string name="header_content_typ_value">application/json</string>
+    <string name="header_content_typ_key">Content-Type</string>
+    <string name="header_api_key_key">api-key</string>
+    <string name="base_url">https://api.hillapay.ir</string>
+    <string name="send_url">/sdk/v1/send</string>
+    <string name="toman">تومان</string>
+
+    <string name="api_key_message">api key is null</string>
+    <string name="phone_number_empty">phone number is null</string>
+    <string name="uid_is_empty">uid is null</string>
+    <string name="transaction_id_is_empty">transaction id is null</string>
+    <string name="ipg_is_empty">ipgmodel is null</string>
+    <string name="payman_is_empty">payman model is null</string>
+    <string name="order_id_empty">order id is null</string>
+    <string name="amount_empty">amount is null</string>
+    <string name="rial">ریال</string>
+    <string name="card">کارت</string>
+    <string name="progress">لطفا صبر کنید…</string>
+    <string name="bank">بانک</string>
+    <string name="start_date">:تاریخ شروع</string>
+    <string name="end_date">:تاریخ پایان</string>
+    <string name="bank_name">بانک:</string>
+    <string name="daily_count">تعداد مجاز در روز:</string>
+    <string name="monthly_count">تعداد مجاز در ماه:</string>
+    <string name="payman_form">فرم قرار داد</string>
+    <string name="add_payman">افزودن حساب</string>
+    <string name="dee">test</string>
+    <string name="price_limit">سقف مجاز:</string>
+    <string name="select_account">انتخاب حساب</string>
+    <string name="end_price">500000</string>
+    <string name="start_price">50</string>
+    <string name="period">مدت:</string>
+    <string name="default_period_time">3</string>
+    <string name="phone_enter">09*********</string>
+
+
 </resources>

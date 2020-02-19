@@ -1,0 +1,94 @@
+{
+  "status": {
+    "status": "200",
+    "message": "Done",
+    "date": 1574167805,
+    "request_id": "hFcbJ14157416780494vTmcD"
+  },
+
+  "result_directdebit_payman_list": [
+    {
+      "trace_id": "123456789",
+      "amount": "1000",
+      "daily": "20",
+      "monthly": "100",
+      "date_start": "1574167805",
+      "date_end": "1674167805",
+      "payman_code": "12345",
+      "payman_id": "13",
+      "status": true,
+      "bank": {
+        "id": "211",
+        "withdrawal_type": "test",
+        "title": "ملت",
+        "img": "mellat"
+      }
+    },{
+      "trace_id": "123456789",
+      "amount": "1000",
+      "daily": "20",
+      "monthly": "100",
+      "date_start": "1574167805",
+      "date_end": "1674167805",
+      "payman_code": "12345",
+      "payman_id": "13",
+      "status": true,
+      "bank": {
+        "id": "211",
+        "withdrawal_type": "test",
+        "title": "ملت",
+        "img": "mellat"
+      }
+    },{
+      "trace_id": "123456789",
+      "amount": "1000",
+      "daily": "20",
+      "monthly": "100",
+      "date_start": "1574167805",
+      "date_end": "1674167805",
+      "payman_code": "12345",
+      "payman_id": "13",
+      "status": false,
+      "bank": {
+        "id": "211",
+        "withdrawal_type": "test",
+        "title": "ملت",
+        "img": "mellat"
+      }
+    },{
+      "trace_id": "123456789",
+      "amount": "1000",
+      "daily": "20",
+      "monthly": "100",
+      "date_start": "1574167805",
+      "date_end": "1674167805",
+      "payman_code": "12345",
+      "payman_id": "13",
+      "status": true,
+      "bank": {
+        "id": "211",
+        "withdrawal_type": "test",
+        "title": "ملی",
+        "img": "melli"
+      }
+    },{
+      "trace_id": "123456789",
+      "amount": "1000",
+      "daily": "20",
+      "monthly": "100",
+      "date_start": "1574167805",
+      "date_end": "1674167805",
+      "payman_code": "12345",
+      "payman_id": "13",
+      "status": false,
+      "bank": {
+        "id": "211",
+        "withdrawal_type": "test",
+        "title": "ملت",
+        "img": "mellat"
+      }
+    }
+
+  ],
+  "debug": {}
+}

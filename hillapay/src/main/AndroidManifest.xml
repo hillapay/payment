@@ -1,2 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ir.hillapay.pay" />
+    package="ir.hillapay.core">
+
+    <application>
+        <activity
+            android:name=".activities.directdebitpay.DirectdebitPayActivity"
+            android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
+            android:theme="@style/HillapayThem" />
+        <activity
+            android:name=".activities.addpayman.AddPaymanActivity"
+            android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
+            android:theme="@style/HillapayThem" />
+        <activity
+            android:name=".activities.directdebitlist.DirectdebitActivity"
+            android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
+            android:theme="@style/HillapayThem" />
+        <activity
+            android:name=".activities.selectionportal.SelectionActivity"
+            android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/HillapayThem" />
+        <activity
+            android:name=".activities.successresult.SuccessResultActivity"
+            android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
+            android:theme="@style/HillapayThem" />
+        <activity
+            android:name=".activities.failedresult.FailedResultActivity"
+            android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
+            android:theme="@style/HillapayThem" />
+        <activity
+            android:name=".activities.payment.PaymentActivity"
+            android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
+            android:theme="@style/HillapayThem" />
+        <activity
+            android:name=".activities.verify.VerifyActivity"
+            android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/HillapayThem" />
+        <activity
+            android:name=".activities.web.HillaPayWebActivity"
+            android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
+            android:theme="@style/HillapayThem" />
+
+        <meta-data
+            android:name="ir.hillapay.core.HILLA_API_KEY"
+            android:value="${HILLA_API_KEY}" />
+
+        <receiver
+            android:name=".sdk.InstallReferrerReceiver"
+            android:exported="true"
+            android:permission="android.permission.INSTALL_PACKAGES">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

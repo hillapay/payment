@@ -1,0 +1,24 @@
+{
+  "status": {
+    "status": "500",
+    "message": "Done",
+    "date": 1574167805,
+    "request_id": "hFcbJ14157416780494vTmcD"
+  },
+  "result_transaction_verify": {
+    "transaction_id": "677041574167804713",
+    "order_id": "1",
+    "card": "5555********5555",
+    "terminal": {
+      "title": "شیرینی اسکمو",
+      "id": "281218"
+    },
+    "bank": {
+      "id": "211",
+      "withdrawal_type": "test",
+      "title": "ملت",
+      "img": "mellat"
+    }
+  },
+  "debug": {}
+}

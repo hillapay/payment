@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlMainPage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+
+    tools:ignore="SpUsage,RtlHardcoded,ContentDescription,RtlSymmetry,UselessParent"
+    tools:context=".activities.selectionportal.SelectionActivity"
+    tools:targetApi="jelly_bean_mr1">
+
+    <RelativeLayout
+        android:id="@+id/llMain"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_activity_banking_portal_selection"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bg_main"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/llAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/rlPrice"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/m_16"
+            android:layout_marginTop="@dimen/m_14">
+
+            <TextView
+                android:id="@+id/txtAppName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_font"
+                android:textSize="@dimen/t_14"
+                tools:text="هیلایی" />
+
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/txtAppLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/p_4"
+                android:text="@string/app_label"
+                android:textColor="@color/text_font"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/w_100"
+            android:layout_height="@dimen/h_94"
+            android:layout_above="@+id/llAppName"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/imgAppLogo"
+                android:layout_width="@dimen/w_78"
+                android:layout_height="@dimen/h_78"
+                android:src="@drawable/ic_certificate" />
+
+            <ImageView
+                android:id="@+id/imgSdkLogo"
+                android:layout_width="@dimen/w_48"
+                android:layout_height="@dimen/h_48"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_logo" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginBottom="@dimen/m_8"
+            android:id="@+id/rlPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/rlTop">
+
+            <ImageView
+                android:id="@+id/imgPrice"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/h_42"
+                android:gravity="center"
+                android:scaleType="fitXY"
+                android:src="@drawable/bg_price" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txtToman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/m_4"
+                    android:text="@string/toman"
+                    android:textColor="@color/price_font"
+                    android:textSize="@dimen/t_19" />
+
+                <TextView
+                    android:id="@+id/txtAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/price_font"
+                    android:textSize="@dimen/t_19"
+                    tools:text="15000" />
+
+                <TextView
+                    android:id="@+id/txtAmountColon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/m_4"
+                    android:text="@string/colon"
+                    android:textColor="@color/price_font"
+                    android:textSize="@dimen/t_19" />
+
+                <TextView
+                    android:id="@+id/txtAmountLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/the_amount_payable"
+                    android:textColor="@color/price_font"
+                    android:textSize="@dimen/t_19" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:paddingBottom="@dimen/p_32"
+            android:id="@+id/rlTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+
+            android:background="@color/portal_selection">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_marginBottom="@dimen/m_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/m_16">
+
+                    <TextView
+                        android:id="@+id/txtHeader2Colon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/m_4"
+                        android:text="@string/colon"
+                        android:textColor="@color/text_font"
+                        android:textSize="@dimen/t_14" />
+
+                    <TextView
+                        android:id="@+id/txtHeader2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/portal_selection_please"
+                        android:textColor="@color/text_font"
+                        android:textSize="@dimen/t_14" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:id="@+id/imgInAppPay"
+                        android:layout_width="@dimen/w_0"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_in_app_pay" />
+
+                    <ImageView
+                        android:id="@+id/imgBankPortal"
+                        android:layout_width="@dimen/w_0"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_bank_portal" />
+
+                    <ImageView
+                        android:id="@+id/imgWallet"
+                        android:layout_width="@dimen/w_0"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_wallet" />
+
+                    <ImageView
+                        android:id="@+id/imgPersonalAccount"
+                        android:layout_width="@dimen/w_0"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_personal_account" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

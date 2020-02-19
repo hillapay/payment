@@ -1,0 +1,48 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <style>
+    body{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    font-size:20px;
+
+    }
+            #success{
+            padding:7px 10px;
+            width:100px;
+            }
+            #failed{
+            padding:7px 10px;
+            width:100px;
+            }
+            #label1{
+            padding:7px 10px;
+            width:100px;
+            }
+
+    </style>
+
+
+</head>
+<body>
+<button id='success'>
+    Success
+</button>
+<label id="label1"></label>
+<button id='failed'>
+    Failed
+</button>
+</body>
+<script>
+    document.getElementById('failed').addEventListener('click',function(){
+        HillapaySdk.ipgCallback("failed");
+    });
+    document.getElementById('success').addEventListener('click',function(){
+        HillapaySdk.ipgCallback("success");
+    });
+
+</script>
+</html>

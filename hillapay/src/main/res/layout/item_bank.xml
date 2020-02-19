@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/p_8"
+    tools:ignore="SpUsage,RtlHardcoded,ContentDescription,RtlSymmetry"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/parsian"
+        android:id="@+id/imgBank"
+        android:layout_width="@dimen/w_24"
+        android:layout_height="@dimen/h_24"/>
+
+    <TextView
+        android:layout_marginRight="@dimen/m_8"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/imgBank"
+        android:id="@+id/txtBankName"
+        tools:text="بانک دی"
+        android:textSize="@dimen/t_14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<resources>
+
+
+    <!-- Base application theme. -->
+    <style name="HillapayThem" parent="android:Theme.Holo.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        
+        <item name="android:windowBackground">@color/activity_transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+
+<!--        <item name="android:seekBarStyle">true</item>-->
+        <!--        <item name="android:windowIsFloating">true</item>-->
+        <!--        <item name="android:backgroundDimEnabled">false</item>-->
+    </style>
+
+    <style name="AlertThem" parent="android:Theme.Holo.Light.Dialog.NoActionBar"/>
+
+</resources>

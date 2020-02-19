@@ -1,0 +1,15 @@
+{
+  "status": {
+    "status": "200",
+    "message": "Done",
+    "date": 1574167805,
+    "request_id": "hFcbJ14157416780494vTmcD"
+  },
+  "result_directdebit_payman_create": {
+
+    "payman_code": "12345",
+    "payman_url": "test"
+
+  },
+  "debug": {}
+}

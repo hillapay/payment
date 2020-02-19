@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlMainPage"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+
+    tools:ignore="ContentDescription,RtlHardcoded,RtlSymmetry,SpUsage,RelativeOverlap,Autofill,LabelFor,TextFields"
+    tools:context=".activities.directdebitlist.DirectdebitActivity">
+
+    <RelativeLayout
+        android:id="@+id/llMain"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_activity_add_payman"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bg_main"
+        android:orientation="vertical">
+
+        <LinearLayout
+
+            android:id="@+id/llField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/m_8"
+                android:gravity="center"
+                android:visibility="gone">
+
+
+                <EditText
+                    android:id="@+id/edtEndDate"
+                    android:layout_width="@dimen/w_150"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edit_text"
+                    android:enabled="false"
+                    android:gravity="center"
+                    android:padding="@dimen/p_4" />
+
+                <TextView
+                    android:id="@+id/txtEndDate"
+                    android:layout_width="@dimen/w_100"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/end_date" />
+
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rlSeekBarMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m_64"
+                android:layout_marginBottom="@dimen/m_16"
+                android:background="@color/bg_seek_bar"
+                android:paddingLeft="@dimen/p_32"
+                android:paddingTop="@dimen/p_16"
+                android:paddingRight="@dimen/p_32"
+                android:paddingBottom="@dimen/p_16">
+
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignTop="@+id/seekBarPrice"-->
+<!--                    android:layout_alignRight="@+id/seekBarPrice"-->
+<!--                    android:layout_alignBottom="@+id/seekBarPrice"-->
+<!--                    android:layout_marginRight="@dimen/m_16"-->
+<!--                    android:visibility="gone">-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/imgSeekBarStart"-->
+<!--                        android:layout_width="4dp"-->
+<!--                        android:layout_height="4dp"-->
+<!--                        android:layout_centerInParent="true"-->
+<!--                        android:src="@drawable/bg_seek_bar_start" />-->
+<!--                </RelativeLayout>-->
+
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignLeft="@+id/seekBarPrice"-->
+<!--                    android:layout_alignTop="@+id/seekBarPrice"-->
+<!--                    android:layout_alignBottom="@+id/seekBarPrice"-->
+<!--                    android:layout_marginLeft="@dimen/m_16"-->
+<!--                    android:visibility="gone">-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/imgSeekBarEnd"-->
+
+<!--                        android:layout_width="4dp"-->
+<!--                        android:layout_height="4dp"-->
+<!--                        android:layout_centerInParent="true"-->
+<!--                        android:src="@drawable/bg_seek_bar_start" />-->
+<!--                </RelativeLayout>-->
+
+<!--                android:maxHeight="@dimen/p_8"-->
+<!--                android:thumb="@drawable/thumb_progress"-->
+<!--                android:progressDrawable="@drawable/progress"-->
+                <SeekBar
+                    android:id="@+id/seekBarPrice"
+                    android:layout_width="@dimen/w_0"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/txtPriceLabel"
+                     />
+
+
+                <TextView
+                    android:id="@+id/txtPriceLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/seekBarPrice"
+                    android:layout_alignBottom="@+id/seekBarPrice"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/m_4"
+                    android:layout_marginRight="@dimen/m_4"
+                    android:text="@string/price"
+                    android:textSize="@dimen/t_14" />
+
+
+                <TextView
+
+                    android:id="@+id/txtEndPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/seekBarPrice"
+                    android:layout_alignRight="@+id/seekBarPrice"
+                    android:padding="@dimen/p_4"
+                    android:text="@string/end_price"
+                    android:textSize="@dimen/t_10" />
+
+                <TextView
+                    android:id="@+id/txtStartPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/seekBarPrice"
+                    android:layout_alignLeft="@+id/seekBarPrice"
+                    android:layout_alignParentLeft="true"
+                    android:padding="@dimen/p_4"
+                    android:text="@string/start_price"
+                    android:textSize="@dimen/t_10" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/m_32"
+                android:layout_marginRight="@dimen/m_32"
+                android:layout_marginBottom="@dimen/m_16"
+                android:gravity="center_vertical">
+
+                <Spinner
+                    android:id="@+id/spBank"
+                    android:layout_width="@dimen/w_0"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/txtBankName"
+                    android:background="@drawable/bg_edit_text"
+                    android:gravity="center"
+                    android:inputType="text"
+
+                    android:spinnerMode="dropdown"
+                    tools:text="BOOMIR" />
+
+                <TextView
+                    android:id="@+id/txtBankName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="right"
+                    android:padding="@dimen/p_4"
+                    android:text="@string/bank_name"
+
+                    android:textSize="@dimen/t_12" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/m_32"
+                android:layout_marginRight="@dimen/m_32"
+                android:gravity="center_vertical">
+
+
+                <EditText
+                    android:id="@+id/edtEndDateMonth"
+                    android:layout_width="@dimen/w_42"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_edit_text"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:padding="@dimen/p_4"
+                    android:textSize="@dimen/t_12" />
+
+                <EditText
+                    android:id="@+id/edtStartDate"
+                    android:layout_width="@dimen/w_150"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/txtStartDate"
+                    android:background="@drawable/bg_edit_text"
+                    android:enabled="false"
+                    android:gravity="center"
+                    android:inputType="datetime"
+                    android:padding="@dimen/p_4"
+                    android:textSize="@dimen/t_12" />
+
+
+                <TextView
+                    android:id="@+id/txtEndDateMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/edtEndDateMonth"
+                    android:padding="@dimen/p_4"
+                    android:text="@string/period"
+                    android:textSize="@dimen/t_12" />
+
+                <TextView
+                    android:id="@+id/txtStartDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:inputType="phone"
+                    android:padding="@dimen/p_4"
+                    android:text="@string/start_date"
+                    android:textSize="@dimen/t_12"
+                    tools:ignore="TextViewEdits" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/m_32"
+                android:layout_marginTop="@dimen/m_16"
+                android:layout_marginRight="@dimen/m_32"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/edtDailyCount"
+                    android:layout_width="@dimen/w_50"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_edit_text"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:padding="@dimen/p_4"
+                    android:text="@string/default_period_time"
+                    android:textSize="@dimen/t_12" />
+
+                <EditText
+                    android:id="@+id/edtMonthlyCount"
+                    android:layout_width="@dimen/w_50"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/txtMonthlyCount"
+                    android:background="@drawable/bg_edit_text"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:padding="@dimen/p_4"
+                    android:text="@string/default_period_time"
+                    android:textSize="@dimen/t_12" />
+
+                <TextView
+                    android:id="@+id/txtDailyCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/edtDailyCount"
+                    android:paddingLeft="@dimen/p_4"
+                    android:text="@string/daily_count"
+                    android:textSize="@dimen/t_12" />
+
+                <TextView
+                    android:id="@+id/txtMonthlyCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/p_4"
+                    android:text="@string/monthly_count"
+                    android:textSize="@dimen/t_12" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/btnAddPayman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llField"
+            android:layout_marginLeft="@dimen/m_32"
+            android:layout_marginTop="@dimen/m_32">
+
+            <ImageView
+                android:id="@+id/imgBtnFailed"
+                android:layout_width="@dimen/w_0"
+                android:layout_height="@dimen/h_0"
+                android:layout_alignLeft="@+id/llAddPayman"
+                android:layout_alignTop="@+id/llAddPayman"
+                android:layout_alignRight="@+id/llAddPayman"
+                android:layout_alignBottom="@+id/llAddPayman"
+                android:gravity="center"
+                android:scaleType="fitXY"
+                android:src="@drawable/bg_success" />
+
+            <LinearLayout
+                android:id="@+id/llAddPayman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:paddingLeft="@dimen/p_32"
+                android:paddingTop="@dimen/p_6"
+                android:paddingRight="@dimen/p_32"
+                android:paddingBottom="@dimen/p_6">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_payman"
+                    android:textColor="@color/button_font"
+                    android:textSize="@dimen/t_14" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlIndicatorPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/llField"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="@dimen/_m_80">
+
+            <ImageView
+                android:id="@+id/imgPriceIndicator"
+                android:layout_width="@dimen/w_60"
+                android:layout_height="@dimen/h_30"
+                android:gravity="center"
+
+                android:src="@drawable/ic_bubble" />
+
+            <LinearLayout
+                android:id="@+id/llPriceIndicator"
+                android:layout_width="@dimen/w_0"
+                android:layout_height="@dimen/w_0"
+                android:layout_alignLeft="@+id/imgPriceIndicator"
+                android:layout_alignTop="@+id/imgPriceIndicator"
+                android:layout_alignRight="@+id/imgPriceIndicator"
+                android:layout_alignBottom="@+id/imgPriceIndicator"
+                android:layout_centerInParent="true"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txtPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/m_2_5"
+                    android:gravity="center"
+                    android:textColor="@color/text_font"
+                    android:textSize="@dimen/t_10"
+                    tools:text="3200000" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

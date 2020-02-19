@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
-//apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.hillapay'
-apply plugin: "com.cpdroid.fat-aar"
+
 
 
 
@@ -20,7 +20,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
         }
@@ -29,7 +29,7 @@ android {
 }
 
 dependencies {
-    embedded fileTree(dir: 'libs', include: ['*.aar'])
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
 
 }
 

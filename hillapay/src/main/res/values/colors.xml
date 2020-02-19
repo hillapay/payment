@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="line">#F8F8F8</color>
+    <color name="line_success">#F8F8F8</color>
+    <color name="price_font">#272728</color>
+    <color name="text_font">#272728</color>
+    <color name="button_font">#FFFFFF</color>
+    <color name="selected_portal">#656565</color>
+    <color name="main">#F8F8F8</color>
+    <color name="main_top">#ebebeb</color>
+    <color name="bg_seek_bar">#FFFFFF</color>
+    <color name="portal_selection">#ebebeb</color>
+    <color name="price_first">#e20f0f</color>
+    <color name="success">#18900C</color>
+    <color name="activity_transparent">#86000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="failed">#ef1401</color>
+    <color name="progress">#FFFFFF</color>
+    <color name="_bg_item_payman1">#FFFFFF</color>
+    <color name="_bg_item_payman2">#dfdede</color>
+    <color name="line_list">#dfdede</color>
+</resources>

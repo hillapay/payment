@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="SpUsage,RtlHardcoded,ContentDescription,RtlSymmetry"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:textColor="@color/text_font"
+        android:id="@+id/txtCertificate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/t_16"
+        android:layout_margin="@dimen/m_16"
+        tools:text="lkfvavh iovh iviih vrweh v hrvur hhrvirhv rhv hrvurh \n kjkfj f jfkboek
+\n lkjtijb kbtgo 'l;  ptb rpe[b kboetrjb" />
+
+    <TextView
+        android:id="@+id/txtExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/t_14"
+        android:layout_marginBottom="@dimen/m_16"
+        android:background="@drawable/bg_success"
+        android:paddingLeft="@dimen/p_16"
+        android:paddingTop="@dimen/p_4"
+        android:paddingRight="@dimen/p_16"
+        android:paddingBottom="@dimen/p_4"
+        android:text="@string/exit"
+        android:textColor="@color/button_font" />
+
+</LinearLayout>

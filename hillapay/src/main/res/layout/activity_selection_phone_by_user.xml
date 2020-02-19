@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlMainPage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+
+    tools:ignore="SpUsage,RtlHardcoded,ContentDescription,RtlSymmetry,UselessParent"
+    tools:context=".activities.selectionportal.SelectionActivity"
+    tools:targetApi="jelly_bean_mr1">
+
+    <RelativeLayout
+        android:id="@+id/llMain"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_activity_banking_portal_selection_phone"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bg_main"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/llAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/rlPhone"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/m_16"
+            android:layout_marginTop="@dimen/m_14">
+
+            <TextView
+                android:id="@+id/txtAppName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_font"
+                android:textSize="@dimen/t_14"
+                tools:text="هیلایی" />
+
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/txtAppLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/p_4"
+                android:text="@string/app_label"
+                android:textColor="@color/text_font"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/w_100"
+            android:layout_height="@dimen/h_94"
+            android:layout_above="@+id/llAppName"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/imgAppLogo"
+                android:layout_width="@dimen/w_78"
+                android:layout_height="@dimen/h_78"
+                android:src="@drawable/ic_certificate" />
+
+            <ImageView
+                android:id="@+id/imgSdkLogo"
+                android:layout_width="@dimen/w_48"
+                android:layout_height="@dimen/h_48"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_logo" />
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/rlPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/rlTop">
+
+            <ImageView
+                android:id="@+id/imgPhone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/h_42"
+                android:gravity="center"
+                android:scaleType="fitXY"
+                android:src="@drawable/bg_price" />
+
+            <LinearLayout
+                android:weightSum="10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center">
+
+                <EditText
+                    android:layout_weight="8"
+                    android:id="@+id/edtPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edit_text"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:padding="@dimen/p_4" />
+
+                <TextView
+                    android:layout_marginLeft="@dimen/m_8"
+                    android:id="@+id/txtPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone"
+                    android:textColor="@color/price_font"
+                    android:textSize="@dimen/t_19" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:paddingBottom="@dimen/p_32"
+            android:paddingTop="@dimen/p_24"
+            android:id="@+id/rlTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/portal_selection">
+
+
+            <RelativeLayout
+                android:id="@+id/rlPhoneBtn"
+                android:layout_marginLeft="@dimen/m_24"
+                android:layout_marginRight="@dimen/m_24"
+                android:layout_marginTop="@dimen/m_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/imgBtnPhone"
+                    android:gravity="center"
+                    android:scaleType="fitXY"
+                    android:layout_alignLeft="@+id/llBtnPhone"
+                    android:layout_alignTop="@+id/llBtnPhone"
+                    android:layout_alignRight="@+id/llBtnPhone"
+                    android:layout_alignBottom="@+id/llBtnPhone"
+                    android:src="@drawable/bg_success"
+                    android:layout_width="@dimen/w_0"
+                    android:layout_height="@dimen/h_0"/>
+
+                <LinearLayout
+                    android:id="@+id/llBtnPhone"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txtBtnPhone"
+                        android:padding="@dimen/p_4"
+                        android:textSize="@dimen/t_19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/button_font"
+                        android:text="@string/next_step"
+                        />
+                    <!--            <ImageView-->
+                    <!--                android:visibility="gone"-->
+                    <!--                android:layout_marginLeft="16dp"-->
+                    <!--                android:layout_gravity="center"-->
+                    <!--                android:layout_width="24dp"-->
+                    <!--                android:layout_height="24dp"-->
+                    <!--                android:src="@drawable/ic_download" />-->
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
