@@ -195,4 +195,5 @@ Open the AndroidManifest and paste the code below
 > **CURVED_BUTTON_SIZE** This option allows you to change the font of the sdk you need to put your custom font in the fonts folder and name it in the settings
 
 ##### download persion pdf document
-[https://github.com/hillapay/HillaPaySample/blob/master/hillapay](https://github.com/hillapay/HillaPaySample/blob/master/hillapay)
+
+[https://github.com/hillapay/HillaPaySample/blob/master/hillapay.pdf](https://github.com/hillapay/HillaPaySample/blob/master/hillapay.pdf)
