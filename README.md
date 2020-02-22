@@ -24,7 +24,7 @@ This library  best For payment libraries.
 ##### Add the dependency
 ```sh
  dependencies {
- 	        implementation 'com.github.mehrtarh:hillarest:1.0.2'
+ 	        implementation 'com.github.mehrtarh:hillarest:v1.0.2'
  	}
 ```
 
