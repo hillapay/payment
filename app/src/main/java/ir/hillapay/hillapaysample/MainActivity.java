@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void paymentResult(IpgCallbackModel ipgModel, boolean isSuccess) {
                 if (ipgModel != null && isSuccess)
-                    verify(MainActivity.this, uid, ipgModel);
+                    HillaPaySdk.verify(MainActivity.this, uid, ipgModel);
                 else {
                     Spanned sp = Html.fromHtml(ipgModel.toString() + "    status: " + isSuccess);
                     txtResult.setText(sp);
@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Spanned sp = Html.fromHtml(verifyModel.toString() + "    status: " + isSuccess);
                 txtResult.setText(sp);
+
 
             }
 

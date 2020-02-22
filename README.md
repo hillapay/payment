@@ -2,11 +2,10 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](http://hillavas.com/)
 
-This library  best For basic libraries.
+This library  best For payment libraries.
 
-  - By HttpURLConnection, AsyncTask and Gson converter
-  - Post method
-  - Get method
+  - Two way for payment 
+  - Not use dependencies
   - Small library
 
 ## How to use
@@ -29,133 +28,171 @@ This library  best For basic libraries.
  	}
 ```
 
-
-#### 2. Add api class
+#### 2. Add api key in build.gradle(app)
 ```sh
- public class HillaSampleApi extends HillaRestBaseCallApi {
-
-
-    public HillaSampleApi() {
-        super(new HillaRestHttpConnection.Builder()
-                .header(new HillaSampleHeadersApi("h1", "h2", "h3"))
-                .baseUrl(SampleRestConfig.getBaseUrl())
-                .readTimeout(10000)
-                .connectionTimeout(15000)
-                .addConverter(HillaSampleGsonConverterFactory.create(
-                        new HillaGsonBuilder().create()))
-                .build());
-    }
-
-    public void getPostModel(
-            HillaRestCallback<PostSampleModel> callback) {
-
-        SampleBodyModel sampleBodyModel = new SampleBodyModel("b1", "b2");
-        List<HillaRestParamModel> paramModels = new ArrayList<>();
-        paramModels.add(new HillaRestParamModel("param1", "p1"));
-        paramModels.add(new HillaRestParamModel("param2", "p2"));
-
-        post(SampleRestConfig.getPostUrl(), PostSampleModel.class, sampleBodyModel, paramModels, callback);
-
-    }
+defaultConfig {
+        manifestPlaceholders = [HILLA_API_KEY: "Your key"]
 }
 ```
-#### 3. Add factoryconverter class
+
+#### 3. Add internet permission to manifest
 ```sh
-public final class HillaSampleGsonConverterFactory extends HillaBaseGsonConverterFactory {
-
-    private static final Charset UTF_8 = Charset.forName("UTF-8");
-
-    public static HillaBaseGsonConverterFactory create() {
-        return create(new HillaGson());
-    }
-    public static HillaBaseGsonConverterFactory create(HillaGson gson) {
-        if (gson == null) throw new NullPointerException("gson == null");
-        return new HillaSampleGsonConverterFactory(gson);
-    }
-
-    private final HillaGson gson;
-
-    private HillaSampleGsonConverterFactory(HillaGson gson) {
-        this.gson = gson;
-    }
-
-    @Override
-    public <T> void modelToJsonConverter(T model, OutputStream outputStream) throws IOException {
-
-        final HillaJsonWriter writer = new HillaJsonWriter(new OutputStreamWriter(outputStream, UTF_8));
-        gson.toJson(model, model.getClass(), writer);
-        writer.flush();
-        writer.close();
-
-    }
-
-    @Override
-    public <T> T jsonToModelConverter(String json, Class<T> clazz) {
-        return gson.fromJson(json, clazz);
-
-    }
-}
-
+<uses-permission android:name="android.permission.INTERNET" />
 ```
+#### 4. Register SDK
 
-#### 4. Add header class
 ```sh
-public class HillaSampleHeadersApi extends HillaRestBaseHeader {
-
-    private final String header1;
-    private final String header2;
-    private final String header3;
-
-    public HillaSampleHeadersApi(String header1, String header2, String header3) {
-        this.header1 = header1;
-        this.header2 = header2;
-        this.header3 = header3;
-    }
-
-
-    @Override
-    public List<HillaRestHeaderModel> getHeaders() {
-        List<HillaRestHeaderModel> headers = new ArrayList<>();
-
-
-        headers.add(new HillaRestHeaderModel(
-                "header1",
-                header1
-        ));
-        headers.add(new HillaRestHeaderModel(
-                "header2",
-                header2
-        ));
-        headers.add(new HillaRestHeaderModel(
-                "header3",
-                header3
-        ));
-
-
-        return headers;
-    }
-}
-
+HillaPaySdk.register(this, uid);
 ```
-
-#### 4. And Use in project
+or
 
 ```sh
-HillaSampleApi hillaSampleApi = new HillaSampleApi();
+HillaPaySdk.register(this, uid,showFirsLevel);
+```
+>**showFirsLevel:** This field is enabled by default. When disabled, Mehran will not be displayed
 
-        hillaSampleApi.getPostModel(new HillaRestCallback<PostSampleModel>() {
+#### 5. Request payment
+```sh
+HillapaySdk. payment(activityContext, amount, phone, orderId, description, uid, additionalData,sku, phoneByUser)
+```
+>**orderid:** The unique id that must be changed each time the payment request is made and must use the same orderId throughout the payment process.
+
+>**uid:**  A unique id that must be unique for all payments.
+
+>**sku:** This is a product code used to control payments.
+
+>**uid:** You can get the phone number from the user to make this field true By activating this field a pre-paid step is added which takes the phone number from the user.
+
+#### 6. Implementation result activity for get result payment
+```sh
+ @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        HillaPaySdk.getPaymentResult(requestCode, resultCode, data, new HillaPaySdkListener() {
+
             @Override
-            public void onResponse(HillaRestResponse<PostSampleModel> response) {
-                if (response != null && response.code() == 200 && response.body() != null)
-                    postSampleModel = response.body();
+            public void paymentResult(IpgCallbackModel ipgModel, boolean isSuccess) {
+                if (ipgModel != null && isSuccess)
+                   HillaPaySdk. verify(MainActivity.this, uid, ipgModel);
+            }
+
+            @Override
+            public void verifyResult(TransactionVerifyModel verifyModel, boolean isSuccess) {
+
 
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void directDebitResult(DirectdebitPayModel payModel, boolean isSuccess) {
 
-                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
 
+            @Override
+            public void failed(String message, @HillaErrorType int errorType) {
+                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
+
+
+    }
+
 ```
+
+>**paymentResult callback:** This callback Returns an IpgCallbackModel type that contains payment information.
+
+>**verifyResult callback:**  This callback returns a TransactionVerifyModel type that responds to verify. With this callback you can get payment results and payment information.
+
+>**directDebitResult callback:** This callback returns a DirectdebitPayModel type that responds to directdebit.
+
+>**failed callback:** If the payment request goes to Error, this callback will be called
+
+#### 7.Verify for payment
+
+```sh
+HillapaySdk. verify(activityContext, uid, ipgModel)
+
+```
+
+>**ipgModel:** Payment must be verified when using EPG, Get ipgModel from paymentResult Callback
+
+###More option in sdk
+
+
+#### 1. Open tracker
+
+```sh
+HillaPaySdk.openTrack(activityContext, uid);
+```
+> when open app call this method
+
+#### 2. Close tracker
+
+```sh
+HillaPaySdk.closeTrack(activityContext, uid);
+```
+> when close app call this method
+
+#### 3. Costume tracker
+
+```sh
+HillaPaySdk.track(activityContext, uid,action, description);
+```
+#### 4. Change sdk them
+
+```sh
+Open the AndroidManifest and paste the code below
+```
+
+```sh
+        <meta-data
+            android:name="ir.hillapay.core.BACKGROUND_MAIN"
+            android:resource="@drawable/background_main" />
+```
+
+> **BACKGROUND_MAIN** Is the color of all backgrounds so you can use photos in the drawable folder and you can use colors in the color folder.
+
+```sh
+        <meta-data
+            android:name="ir.hillapay.core.BACKGROUND_MAIN2"
+            android:resource="@drawable/background_main2" />
+```
+
+> **BACKGROUND_MAIN2**  Is the color of all backgrounds so you can use photos in the drawable folder and you can use colors in the color folder.
+
+```sh
+        <meta-data
+            android:name="ir.hillapay.core.LINE_COLOR"
+            android:resource="@color/colorAccent" />
+```
+> **LINE_COLOR**  Is about the color of lines that you can use in the drawable folder, as well as the colors in the color folder.
+
+```sh
+        <meta-data
+            android:name="ir.hillapay.core.POPUP_COLOR"
+            android:resource="@color/colorAccent4" />
+```
+> **POPUP_COLOR**  It is about the color of dialogs that you can use in the drawable folder and the colors in the color folder.
+
+```sh
+        <meta-data
+            android:name="ir.hillapay.core.TEXT_COLOR"
+            android:resource="@color/colorAccent3" />
+        <meta-data
+            android:name="ir.hillapay.core.TEXT_COLOR"
+            android:resource="@color/colorAccent3" />
+        <meta-data
+            android:name="ir.hillapay.core.CURVED_BUTTON_SIZE"
+            android:value="100" />
+```
+> **CURVED_BUTTON_SIZE** You can change the solvent around the buttons with this option
+
+```sh
+       <meta-data
+            android:name="ir.hillapay.core.FONT"
+            android:value="fonts/hillafont.otf" />
+```
+> **CURVED_BUTTON_SIZE** This option allows you to change the font of the sdk you need to put your custom font in the fonts folder and name it in the settings
+
+##### download persion pdf document
+[https://github.com/hillapay/HillaPaySample/blob/master/hillapay](https://github.com/hillapay/HillaPaySample/blob/master/hillapay)
