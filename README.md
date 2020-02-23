@@ -52,19 +52,19 @@ or
 ```sh
 HillaPaySdk.register(this, uid,showFirsLevel);
 ```
->showFirsLevel: Status of this field is "enabled" by default. In the case of "disabled", then select the payment method activity will not be displayed.
+>**showFirsLevel:** Status of this field is "enabled" by default. In the case of "disabled", then select the payment method activity will not be displayed.
 
 #### 5. Request payment
 ```sh
 HillapaySdk. payment(activityContext, amount, phone, orderId, description, uid, additionalData,sku, phoneByUser)
 ```
->orderid: It is a unique id that must be changed each time the payment request is made and must use the same orderId throughout the payment process.
+>**orderid:** It is a unique id that must be changed each time the payment request is made and must use the same orderId throughout the payment process.
 
->uid:  It is a unique id that must be kept unique for all the payments.
+>**uid:**  It is a unique id that must be kept unique for all the payments.
 
->sku: It is a product code used to control payments.
+>**sku:** It is a product code used to control payments.
 
->uid: You can get the phone number from the user to make this field TRUE by activating this field, a pre-paid step is added, which takes the phone number from the user.
+>**uid:** You can get the phone number from the user to make this field TRUE by activating this field, a pre-paid step is added, which takes the phone number from the user.
 
 #### 6. Implementation result activity to get result payment
 ```java
@@ -104,13 +104,13 @@ public class Activity
 }
 ```
 
->paymentResult callback: This callback Returns an IpgCallbackModel type that contains payment information.
+>**paymentResult callback:** This callback Returns an IpgCallbackModel type that contains payment information.
 
->verifyResult callback:  This callback returns a TransactionVerifyModel type that responds to verify. With this callback, you can get payment results and payment information.
+>**verifyResult callback:**  This callback returns a TransactionVerifyModel type that responds to verify. With this callback, you can get payment results and payment information.
 
->directDebitResult callback: This callback returns a DirectdebitPayModel type that responds to directdebit.
+>**directDebitResult callback:** This callback returns a DirectdebitPayModel type that responds to directdebit.
 
->failed callback: This method will call when the payment request faces error.
+>**failed callback:** This method will call when the payment request faces error.
 
 #### 7.Verify the payment
 
@@ -118,7 +118,7 @@ public class Activity
 HillapaySdk. verify(activityContext, uid, ipgModel)
 ```
 
->ipgModel: Payment must be verified when using IPG, Get ipgModel from paymentResult callback
+>**ipgModel:** Payment must be verified when using IPG, Get ipgModel from paymentResult callback
 
 ###More option in SDK
 
@@ -153,54 +153,51 @@ Open the AndroidManifest and paste the below code:
             android:name="ir.hillapay.core.BACKGROUND_MAIN"
             android:resource="@drawable/background_main" />
 ```
-> BACKGROUND_MAIN It is the color of all backgrounds, you can also use a photo in the background and load it from the "drawable" folder, and you can set color values in the "colors.xml" in "values" folder.
+> **BACKGROUND_MAIN** It is the color of all backgrounds, you can also use a photo in the background and load it from the "drawable" folder, and you can set color values in the "colors.xml" in "values" folder.
 
 ```xml
         <meta-data
             android:name="ir.hillapay.core.BACKGROUND_MAIN2"
             android:resource="@drawable/background_main2" />
 ```
-> BACKGROUND_MAIN2  It is the color of all backgrounds, you can also use a photo in the background and load it from the "drawable" folder, and you can set color values in the "colors.xml" in "values" folder. It is visible on the BACKGROUND_MAIN.
+> **BACKGROUND_MAIN2**  It is the color of all backgrounds, you can also use a photo in the background and load it from the "drawable" folder, and you can set color values in the "colors.xml" in "values" folder. It is visible on the BACKGROUND_MAIN.
 
 ```xml
         <meta-data
             android:name="ir.hillapay.core.LINE_COLOR"
             android:resource="@color/colorAccent" />
 ```            
-> LINE_COLOR  It is the color of lines that you can set it in the "drawable" folder, and you can set color values in the "colors.xml" in the "values" folder. 
+> **LINE_COLOR**  It is the color of lines that you can set it in the "drawable" folder, and you can set color values in the "colors.xml" in the "values" folder. 
 
 ```xml
         <meta-data
             android:name="ir.hillapay.core.POPUP_COLOR"
             android:resource="@color/colorAccent4" />
 ```            
-> POPUP_COLOR  It is the color of dialogue boxes that you can set it in the "drawable" folder, and you can set color values in the "colors.xml" in the "values" folder. 
+> **POPUP_COLOR**  It is the color of dialogue boxes that you can set it in the "drawable" folder, and you can set color values in the "colors.xml" in the "values" folder. 
 
 ```xml
         <meta-data
             android:name="ir.hillapay.core.TEXT_COLOR"
             android:resource="@color/colorAccent3" />
 ```    
-```xml
-       <meta-data
-            android:name="ir.hillapay.core.TEXT_COLOR"
-            android:resource="@color/colorAccent3" />
-```  
+> **TEXT_COLOR** You can change the color text with this option. 
+
 ```xml
         <meta-data
             android:name="ir.hillapay.core.CURVED_BUTTON_SIZE"
             android:value="100" />
 ```          
 
-        
-> FONT This option allows you to change the font of the SDK. Put your custom font in the "fonts" folder and name it in the settings.
+> **CURVED_BUTTON_SIZE** You can change the curve amount around the buttons with this option.        
+
 
 ```xml
        <meta-data
             android:name="ir.hillapay.core.FONT"
             android:value="fonts/hillafont.otf" />
 ```            
-> CURVED_BUTTON_SIZE You can change the curve amount around the buttons with this option.
+> **FONT** This option allows you to change the font of the SDK. Put your custom font in the "fonts" folder and name it in the settings.
 
 ##### Download the Persian version in PDF
 
