@@ -2,69 +2,67 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](http://hillavas.com/)
 
-This library  best For payment libraries.
+HillaPay Payment SDK is an effective and convenient way to implement a payment system to android apps and games. The SDK is working pretty fine with the Shetab Banking Network and all related cards. This payment SDK is Android-market-independent so that you may take benefit from it for a wide variety of use.
 
-  - Two way for payment 
-  - Not use dependencies
-  - Small library
+Some of the features of this payment SDK are as follows;
+- There are two methods for making payments,
+- it does not rely on dependencies,
+- it is pretty small in size, and
+- there is no other library in it.
+
+Let's have a look at it.
+
 
 ## How to use
 
 #### 1. Add dependencies
 
-##### Add it in your root build.gradle at the end of repositories:
-```sh
+##### Add it to your root build.gradle at the end of repositories:
+sh
  allprojects {
- 		repositories {
- 			...
- 			maven { url 'https://jitpack.io' }
- 		}
- 	}
-```
+     repositories {
+       ...
+       maven { url 'https://jitpack.io' }
+     }
+   }
 ##### Add the dependency
-```sh
+sh
  dependencies {
- 	        implementation 'com.github.mehrtarh:hillarest:v1.0.2'
- 	}
-```
+           implementation 'com.github.mehrtarh:hillarest:1.0.2'
+   }
 
-#### 2. Add api key in build.gradle(app)
-```sh
+#### 2. Add API key in build.gradle(app)
+sh
 defaultConfig {
         manifestPlaceholders = [HILLA_API_KEY: "Your key"]
 }
-```
 
 #### 3. Add internet permission to manifest
-```sh
+sh
 <uses-permission android:name="android.permission.INTERNET" />
-```
 #### 4. Register SDK
 
-```sh
+sh
 HillaPaySdk.register(this, uid);
-```
 or
 
-```sh
+sh
 HillaPaySdk.register(this, uid,showFirsLevel);
-```
->**showFirsLevel:** This field is enabled by default. When disabled, Mehran will not be displayed
+>showFirsLevel: Status of this field is "enabled" by default. In the case of "disabled", then select the payment method activity will not be displayed.
 
 #### 5. Request payment
-```sh
+sh
 HillapaySdk. payment(activityContext, amount, phone, orderId, description, uid, additionalData,sku, phoneByUser)
-```
->**orderid:** The unique id that must be changed each time the payment request is made and must use the same orderId throughout the payment process.
+>orderid: It is a unique id that must be changed each time the payment request is made and must use the same orderId throughout the payment process.
 
->**uid:**  A unique id that must be unique for all payments.
+>uid:  It is a unique id that must be kept unique for all the payments.
 
->**sku:** This is a product code used to control payments.
+>sku: It is a product code used to control payments.
 
->**uid:** You can get the phone number from the user to make this field true By activating this field a pre-paid step is added which takes the phone number from the user.
+>uid: You can get the phone number from the user to make this field TRUE by activating this field, a pre-paid step is added, which takes the phone number from the user.
 
-#### 6. Implementation result activity for get result payment
-```sh
+#### 6. Implementation result activity to get result payment
+sh
  @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -97,84 +95,74 @@ HillapaySdk. payment(activityContext, amount, phone, orderId, description, uid, 
 
     }
 
-```
 
->**paymentResult callback:** This callback Returns an IpgCallbackModel type that contains payment information.
+>paymentResult callback: This callback Returns an IpgCallbackModel type that contains payment information.
 
->**verifyResult callback:**  This callback returns a TransactionVerifyModel type that responds to verify. With this callback you can get payment results and payment information.
+>verifyResult callback:  This callback returns a TransactionVerifyModel type that responds to verify. With this callback, you can get payment results and payment information.
 
->**directDebitResult callback:** This callback returns a DirectdebitPayModel type that responds to directdebit.
+>directDebitResult callback: This callback returns a DirectdebitPayModel type that responds to directdebit.
 
->**failed callback:** If the payment request goes to Error, this callback will be called
+>failed callback: This method will call when the payment request faces error.
 
-#### 7.Verify for payment
+#### 7.Verify the payment
 
-```sh
+sh
 HillapaySdk. verify(activityContext, uid, ipgModel)
 
-```
 
->**ipgModel:** Payment must be verified when using EPG, Get ipgModel from paymentResult Callback
+>ipgModel: Payment must be verified when using IPG, Get ipgModel from paymentResult callback
 
-###More option in sdk
+###More option in SDK
 
 
 #### 1. Open tracker
 
-```sh
+sh
 HillaPaySdk.openTrack(activityContext, uid);
-```
-> when open app call this method
+> This method will call when the app opens.
 
 #### 2. Close tracker
 
-```sh
+sh
 HillaPaySdk.closeTrack(activityContext, uid);
-```
-> when close app call this method
+> This method will call when the app closes.
 
 #### 3. Costume tracker
 
-```sh
+sh
 HillaPaySdk.track(activityContext, uid,action, description);
-```
 #### 4. Change sdk them
 
-```sh
-Open the AndroidManifest and paste the code below
-```
+sh
+Open the AndroidManifest and paste the below code:
 
-```sh
+xml
         <meta-data
             android:name="ir.hillapay.core.BACKGROUND_MAIN"
             android:resource="@drawable/background_main" />
-```
 
-> **BACKGROUND_MAIN** Is the color of all backgrounds so you can use photos in the drawable folder and you can use colors in the color folder.
+> BACKGROUND_MAIN It is the color of all backgrounds, you can also use a photo in the background and load it from the "drawable" folder, and you can set color values in the "colors.xml" in "values" folder.
 
-```sh
+xml
         <meta-data
             android:name="ir.hillapay.core.BACKGROUND_MAIN2"
             android:resource="@drawable/background_main2" />
-```
 
-> **BACKGROUND_MAIN2**  Is the color of all backgrounds so you can use photos in the drawable folder and you can use colors in the color folder.
+> BACKGROUND_MAIN2  It is the color of all backgrounds, you can also use a photo in the background and load it from the "drawable" folder, and you can set color values in the "colors.xml" in "values" folder. It is visible on the BACKGROUND_MAIN.
 
-```sh
+xml
         <meta-data
             android:name="ir.hillapay.core.LINE_COLOR"
             android:resource="@color/colorAccent" />
-```
-> **LINE_COLOR**  Is about the color of lines that you can use in the drawable folder, as well as the colors in the color folder.
+> LINE_COLOR  It is the color of lines that you can set it in the "drawable" folder, and you can set color values in the "colors.xml" in the "values" folder. 
 
-```sh
+xml
         <meta-data
             android:name="ir.hillapay.core.POPUP_COLOR"
             android:resource="@color/colorAccent4" />
-```
-> **POPUP_COLOR**  It is about the color of dialogs that you can use in the drawable folder and the colors in the color folder.
+> POPUP_COLOR  It is the color of dialogue boxes that you can set it in the "drawable" folder, and you can set color values in the "colors.xml" in the "values" folder. 
 
-```sh
+xml
         <meta-data
             android:name="ir.hillapay.core.TEXT_COLOR"
             android:resource="@color/colorAccent3" />
@@ -184,16 +172,14 @@ Open the AndroidManifest and paste the code below
         <meta-data
             android:name="ir.hillapay.core.CURVED_BUTTON_SIZE"
             android:value="100" />
-```
-> **CURVED_BUTTON_SIZE** You can change the solvent around the buttons with this option
+> FONT This option allows you to change the font of the SDK. Put your custom font in the "fonts" folder and name it in the settings.
 
-```sh
+xml
        <meta-data
             android:name="ir.hillapay.core.FONT"
             android:value="fonts/hillafont.otf" />
-```
-> **CURVED_BUTTON_SIZE** This option allows you to change the font of the sdk you need to put your custom font in the fonts folder and name it in the settings
+> CURVED_BUTTON_SIZE You can change the curve amount around the buttons with this option.
 
-##### download persion pdf document
+##### Download the Persian version in PDF
 
 [https://github.com/hillapay/HillaPaySample/blob/master/hillapay.pdf](https://github.com/hillapay/HillaPaySample/blob/master/hillapay.pdf)
