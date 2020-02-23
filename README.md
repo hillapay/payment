@@ -18,41 +18,46 @@ Let's have a look at it.
 #### 1. Add dependencies
 
 ##### Add it to your root build.gradle at the end of repositories:
-sh
+```groovy
  allprojects {
      repositories {
-       ...
+       
        maven { url 'https://jitpack.io' }
      }
    }
+```
 ##### Add the dependency
-sh
+```groovy
  dependencies {
            implementation 'com.github.mehrtarh:hillarest:1.0.2'
    }
-
+```
 #### 2. Add API key in build.gradle(app)
-sh
+```groovy
 defaultConfig {
         manifestPlaceholders = [HILLA_API_KEY: "Your key"]
 }
-
+```
 #### 3. Add internet permission to manifest
-sh
+```xml
 <uses-permission android:name="android.permission.INTERNET" />
+```
 #### 4. Register SDK
 
-sh
+```sh
 HillaPaySdk.register(this, uid);
+```
 or
 
-sh
+```sh
 HillaPaySdk.register(this, uid,showFirsLevel);
+```
 >showFirsLevel: Status of this field is "enabled" by default. In the case of "disabled", then select the payment method activity will not be displayed.
 
 #### 5. Request payment
-sh
+```sh
 HillapaySdk. payment(activityContext, amount, phone, orderId, description, uid, additionalData,sku, phoneByUser)
+```
 >orderid: It is a unique id that must be changed each time the payment request is made and must use the same orderId throughout the payment process.
 
 >uid:  It is a unique id that must be kept unique for all the payments.
@@ -62,7 +67,9 @@ HillapaySdk. payment(activityContext, amount, phone, orderId, description, uid, 
 >uid: You can get the phone number from the user to make this field TRUE by activating this field, a pre-paid step is added, which takes the phone number from the user.
 
 #### 6. Implementation result activity to get result payment
-sh
+```java
+public class Activity
+{
  @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -94,7 +101,8 @@ sh
 
 
     }
-
+}
+```
 
 >paymentResult callback: This callback Returns an IpgCallbackModel type that contains payment information.
 
@@ -106,9 +114,9 @@ sh
 
 #### 7.Verify the payment
 
-sh
+```sh
 HillapaySdk. verify(activityContext, uid, ipgModel)
-
+```
 
 >ipgModel: Payment must be verified when using IPG, Get ipgModel from paymentResult callback
 
@@ -117,67 +125,81 @@ HillapaySdk. verify(activityContext, uid, ipgModel)
 
 #### 1. Open tracker
 
-sh
+```sh
 HillaPaySdk.openTrack(activityContext, uid);
+```
 > This method will call when the app opens.
 
 #### 2. Close tracker
 
-sh
+```sh
 HillaPaySdk.closeTrack(activityContext, uid);
+```
 > This method will call when the app closes.
 
 #### 3. Costume tracker
 
-sh
+```sh
 HillaPaySdk.track(activityContext, uid,action, description);
+```
 #### 4. Change sdk them
 
-sh
+```sh
 Open the AndroidManifest and paste the below code:
+```
 
-xml
+```xml
         <meta-data
             android:name="ir.hillapay.core.BACKGROUND_MAIN"
             android:resource="@drawable/background_main" />
-
+```
 > BACKGROUND_MAIN It is the color of all backgrounds, you can also use a photo in the background and load it from the "drawable" folder, and you can set color values in the "colors.xml" in "values" folder.
 
-xml
+```xml
         <meta-data
             android:name="ir.hillapay.core.BACKGROUND_MAIN2"
             android:resource="@drawable/background_main2" />
-
+```
 > BACKGROUND_MAIN2  It is the color of all backgrounds, you can also use a photo in the background and load it from the "drawable" folder, and you can set color values in the "colors.xml" in "values" folder. It is visible on the BACKGROUND_MAIN.
 
-xml
+```xml
         <meta-data
             android:name="ir.hillapay.core.LINE_COLOR"
             android:resource="@color/colorAccent" />
+```            
 > LINE_COLOR  It is the color of lines that you can set it in the "drawable" folder, and you can set color values in the "colors.xml" in the "values" folder. 
 
-xml
+```xml
         <meta-data
             android:name="ir.hillapay.core.POPUP_COLOR"
             android:resource="@color/colorAccent4" />
+```            
 > POPUP_COLOR  It is the color of dialogue boxes that you can set it in the "drawable" folder, and you can set color values in the "colors.xml" in the "values" folder. 
 
-xml
+```xml
         <meta-data
             android:name="ir.hillapay.core.TEXT_COLOR"
             android:resource="@color/colorAccent3" />
-        <meta-data
+```    
+```xml
+       <meta-data
             android:name="ir.hillapay.core.TEXT_COLOR"
             android:resource="@color/colorAccent3" />
+```  
+```xml
         <meta-data
             android:name="ir.hillapay.core.CURVED_BUTTON_SIZE"
             android:value="100" />
+```          
+
+        
 > FONT This option allows you to change the font of the SDK. Put your custom font in the "fonts" folder and name it in the settings.
 
-xml
+```xml
        <meta-data
             android:name="ir.hillapay.core.FONT"
             android:value="fonts/hillafont.otf" />
+```            
 > CURVED_BUTTON_SIZE You can change the curve amount around the buttons with this option.
 
 ##### Download the Persian version in PDF
