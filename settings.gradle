@@ -1,2 +1,2 @@
 include ':app', ':hillapay'
-rootProject.name='HillaPaySample'
+rootProject.name='payment'
