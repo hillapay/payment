@@ -1,6 +1,8 @@
 # Hillapay
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](http://hillavas.com/)  [![](https://jitpack.io/v/hillapay/payment.svg)](https://jitpack.io/#hillapay/payment)
+[![](https://travis-ci.org/joemccann/dillinger.svg?branch=master)]([hilla vas](http://hillavas.com/ "hilla vas")
+ 
+[![](https://jitpack.io/v/hillapay/payment.svg)](https://jitpack.io/#hillapay/payment)
 
 HillaPay Payment SDK is an effective and convenient way to implement a payment system to android apps and games. The SDK is working pretty fine with the Shetab Banking Network and all related cards. This payment SDK is Android-market-independent so that you may take benefit from it for a wide variety of use.
 
@@ -29,7 +31,7 @@ Let's have a look at it.
 ##### Add the dependency
 ```groovy
  dependencies {
-            implementation 'com.github.hillapay:payment:v1.3.0'
+            implementation 'com.github.hillapay:payment:v1.4.0'
    }
 ```
 #### 2. Add API key in build.gradle(app)
