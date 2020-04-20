@@ -136,9 +136,9 @@ public class Activity
 
 >**failed callback:** This method will call when the payment request faces error.
 
->**directDebitVasResult callback:** This method is called when you have created a vas contract.
+>**directDebitVasResult callback:** This method called when you had created an M-VAS contract.
 
->**otpResult callback:** This method is called when you have used OTP as a login.
+>**otpResult callback:** This method called when you had used OTP as a login.
 
 #### 7.Verify the payment
 
@@ -149,16 +149,14 @@ HillapaySdk. verify(activityContext, uid, ipgModel)
 >**ipgModel:** Payment must be verified when using IPG, Get ipgModel from paymentResult callback
 
 #### OPT
-You can use the OTP login instead of having a server login yourself
-To be able to use this feature, you must call the following method :
-
+You can use the OTP login instead of having a server login yourself to be able to use this feature, and you must call the following method.
 ```sh
 HillaPaySdk.OTP.phoneRegister(activityContext,uid);
 ```
-The answer to this method is returned in OnActivityResult, which is in the otpResult method
+The answer to this method returned in OnActivityResult, which is in the otpResult method.
 
-#### VAS
-In order to use the VAS capabilities, you must first log in with OTP and then follow the steps below
+#### M-VAS (Mobile Value Added Services)
+To use the M-VAS capabilities, you must first log in with OTP and then follow the steps below.
 
 #### 1.otpRegister
 ```sh
@@ -181,28 +179,27 @@ In order to use the VAS capabilities, you must first log in with OTP and then fo
             });
 ```
 
-This method checks whether the VAS user is active or not, which returns.
+This method checks whether the M-VAS user is active or not, and returns the result, which is as follows.
 
-Which is as follows
 
 ##### HillaVasActiveType
 
->**HillaVasActiveType.Expire:** The user's contract has expired
+>**HillaVasActiveType.Expire:** The user's contract has expired.
 
->**HillaVasActiveType.Unsubscribe:** The user has no contract
+>**HillaVasActiveType.Unsubscribe:** The user has no contract.
 
->**HillaVasActiveType.Subscribe:** The user has a contract
+>**HillaVasActiveType.Subscribe:** The user has a contract.
 
 
  #### 3create Payman
-If the user did not have a contract or the contract expired, use the following method
+If the user did not have a contract or the contract expired, use the following method. (n.b., Paymen means "Contract").
 ```sh
 HillaPaySdk.VAS.createPayman(activityContext, uid);
 ```
-The answer to this method is returned in OnActivityResult, which is in the directDebitVasResult method
+The answer to this method is returned in OnActivityResult, which is in the directDebitVasResult method.
 
 #### 4.unsubscribe User
-You can cancel the user contract using the following method
+You can cancel the user contract using the following method.
 ```sh
 HillaPaySdk.VAS.unsubscribeUser(MainActivity.this, uid, new HillaPayUnSubscribeUserListener() {
                 @Override
@@ -295,21 +292,21 @@ Open the AndroidManifest and paste the below code:
             android:name="ir.hillapay.core.REGISTER_PHONE_LABEL"
             android:value="@string/phone_label" />
 ```            
-> **REGISTER_PHONE_LABEL** You can change the title of the OTP phone number
+> **REGISTER_PHONE_LABEL** You can change the title of the OTP phone number.
 
 ```xml
       <meta-data
             android:name="ir.hillapay.core.REGISTER_CODE_LABEL"
             android:value="@string/phone_label" />
 ```            
-> **REGISTER_PHONE_LABEL** You can change the title of the OTP code number
+> **REGISTER_PHONE_LABEL**  You can change the title of the OTP code number.
 
 ```xml
       <meta-data
             android:name="ir.hillapay.core.BACKGROUND_PHONE_NUMBER"
             android:value="@color/colorAccent5" />
 ```            
-> **BACKGROUND_PHONE_NUMBER**  It is the color of all backgrounds, you can also use a photo in the background and load it from the "drawable" folder, and you can set color values in the "colors.xml" in "values" folder. It is visible on the BACKGROUND_PHONE_NUMBER in OTP.
+> **BACKGROUND_PHONE_NUMBER**   It is the color of all backgrounds, you can also use a photo in the background and load it from the "drawable" folder, and you can set color values in the "colors.xml" in "values" folder. It is visible on the BACKGROUND_PHONE_NUMBER in OTP.
 
 ```xml
        <meta-data

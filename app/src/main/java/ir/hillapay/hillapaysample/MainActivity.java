@@ -91,6 +91,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
+            public void directDebitResult(DirectdebitPayModel payModel, boolean isSuccess) {
+                Spanned sp = Html.fromHtml(payModel.toString() + "    status: " + isSuccess);
+                txtResult.setText(sp);
+            }
+
+            @Override
             public void directDebitVasResult(boolean isSuccess) {
                 // TODO: use result
             }
@@ -98,12 +104,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void otpResult(boolean isSuccess, String phone) {
                 // TODO: use results
-            }
-
-            @Override
-            public void directDebitResult(DirectdebitPayModel payModel, boolean isSuccess) {
-                Spanned sp = Html.fromHtml(payModel.toString() + "    status: " + isSuccess);
-                txtResult.setText(sp);
             }
 
             @Override
