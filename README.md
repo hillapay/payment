@@ -1,4 +1,4 @@
-# Hillapay
+# HillaPay
 
 [HillaVas][hilla]
  
@@ -158,11 +158,11 @@ The answer to this method returned in OnActivityResult, which is in the otpResul
 #### M-VAS (Mobile Value Added Services)
 To use the M-VAS capabilities, you must first log in with OTP and then follow the steps below.
 
-#### 1.otpRegister
+#### 1. otpRegister
 ```sh
  HillaPaySdk.OTP.phoneRegister(activityContext, uid);
 ```
- #### 2.checkActiveUser
+ #### 2. CheckActiveUser
 ```sh
  HillaPaySdk.VAS.checkActiveUser(activityContext, uid, 
        new HillaPayActiveUserListener() {
@@ -191,14 +191,14 @@ This method checks whether the M-VAS user is active or not, and returns the resu
 >**HillaVasActiveType.Subscribe:** The user has a contract.
 
 
- #### 3create Payman
+ #### 3. Create Payman
 If the user did not have a contract or the contract expired, use the following method. (n.b., Paymen means "Contract").
 ```sh
 HillaPaySdk.VAS.createPayman(activityContext, uid);
 ```
 The answer to this method is returned in OnActivityResult, which is in the directDebitVasResult method.
 
-#### 4.unsubscribe User
+#### 4. Unsubscribe User
 You can cancel the user contract using the following method.
 ```sh
 HillaPaySdk.VAS.unsubscribeUser(MainActivity.this, uid, new HillaPayUnSubscribeUserListener() {
