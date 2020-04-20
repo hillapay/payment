@@ -19,4 +19,5 @@
     <color name="_bg_item_payman1">#FFFFFF</color>
     <color name="_bg_item_payman2">#dfdede</color>
     <color name="line_list">#dfdede</color>
+    <color name="refresh">#0343FF</color>
 </resources>

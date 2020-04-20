@@ -42,17 +42,27 @@ defaultConfig {
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
-#### 4. Register SDK
+#### 4. Initialize SDK
 
 ```sh
-HillaPaySdk.register(this, uid);
+HillaPaySdk.init(this, uid);
 ```
 or
 
 ```sh
-HillaPaySdk.register(this, uid,showFirsLevel);
+HillaPaymentConfig config= new HillaPaymentConfig.Builder()
+                .setDirectdebitDailyWithdrawCount(3)
+                .setDirectdebitMonthlyWithdrawCount(30)
+                .showFirstLevel(true)
+                .build();
+
+HillaPaySdk.init(this, uid,config);
 ```
 >**showFirsLevel:** Status of this field is "enabled" by default. In the case of "disabled", then select the payment method activity will not be displayed.
+
+>**DirectdebitDailyWithdrawCount:** This field is the number of harvests per day, which is 1 by default.
+
+>**DirectdebitMonthlyWithdrawCount:** This field is the number of harvests per month, which is 3 by default
 
 #### 5. Request payment
 ```sh
@@ -66,7 +76,7 @@ HillapaySdk. payment(activityContext, amount, phone, orderId, description, uid, 
 
 >**uid:** You can get the phone number from the user to make this field TRUE by activating this field, a pre-paid step is added, which takes the phone number from the user.
 
-#### 6. Implementation result activity to get result payment
+#### 6. Implementation result activity to get result sdk
 ```java
 public class Activity
 {
@@ -74,7 +84,7 @@ public class Activity
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        HillaPaySdk.getPaymentResult(requestCode, resultCode, data, new HillaPaySdkListener() {
+        HillaPaySdk.getSdkResult(requestCode, resultCode, data, new HillaPaySdkListener() {
 
             @Override
             public void paymentResult(IpgCallbackModel ipgModel, boolean isSuccess) {
@@ -97,8 +107,20 @@ public class Activity
             public void failed(String message, @HillaErrorType int errorType) {
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
             }
-        });
-
+            
+            @Override
+            public void directDebitVasResult(boolean isSuccess) {
+                // TODO: use result  
+            }
+            
+            @Override
+            public void otpResult(boolean isSuccess, String phone) {
+                // TODO: use results  
+            }
+            
+            });
+        
+ 			
 
     }
 }
@@ -112,6 +134,10 @@ public class Activity
 
 >**failed callback:** This method will call when the payment request faces error.
 
+>**directDebitVasResult callback:** This method is called when you have created a vas contract.
+
+>**otpResult callback:** This method is called when you have used OTP as a login.
+
 #### 7.Verify the payment
 
 ```sh
@@ -120,7 +146,77 @@ HillapaySdk. verify(activityContext, uid, ipgModel)
 
 >**ipgModel:** Payment must be verified when using IPG, Get ipgModel from paymentResult callback
 
-###More option in SDK
+#### OPT
+You can use the OTP login instead of having a server login yourself
+To be able to use this feature, you must call the following method :
+
+```sh
+HillaPaySdk.OTP.phoneRegister(activityContext,uid);
+```
+The answer to this method is returned in OnActivityResult, which is in the otpResult method
+
+#### VAS
+In order to use the VAS capabilities, you must first log in with OTP and then follow the steps below
+
+#### 1.otpRegister
+```sh
+ HillaPaySdk.OTP.phoneRegister(activityContext, uid);
+```
+ #### 2.checkActiveUser
+```sh
+ HillaPaySdk.VAS.checkActiveUser(activityContext, uid, 
+       new HillaPayActiveUserListener() {
+                @Override
+                public void onResult(@HillaVasActiveType int active) {
+                 // Compare active with HillaVasActiveType then implement 
+				 // your favorite code
+                }
+
+                @Override
+                public void onFailed(String message, int errorType) {
+                    Toast.makeText(MainActivity.this,  message, Toast.LENGTH_SHORT).show();
+                }
+            });
+```
+
+This method checks whether the VAS user is active or not, which returns.
+
+Which is as follows
+
+##### HillaVasActiveType
+
+>**HillaVasActiveType.Expire:** The user's contract has expired
+
+>**HillaVasActiveType.Unsubscribe:** The user has no contract
+
+>**HillaVasActiveType.Subscribe:** The user has a contract
+
+
+ #### 3create Payman
+If the user did not have a contract or the contract expired, use the following method
+```sh
+HillaPaySdk.VAS.createPayman(activityContext, uid);
+```
+The answer to this method is returned in OnActivityResult, which is in the directDebitVasResult method
+
+#### 4.unsubscribe User
+You can cancel the user contract using the following method
+```sh
+HillaPaySdk.VAS.unsubscribeUser(MainActivity.this, uid, new HillaPayUnSubscribeUserListener() {
+                @Override
+                public void onResult(boolean unSubscribe) {
+
+                }
+
+                @Override
+                public void onFailed(String message, int errorType) {
+                    Toast.makeText(MainActivity.this,  message, Toast.LENGTH_SHORT).show();
+                }
+            });
+```
+
+
+### More option in SDK
 
 
 #### 1. Open tracker
@@ -188,9 +284,30 @@ Open the AndroidManifest and paste the below code:
             android:name="ir.hillapay.core.CURVED_BUTTON_SIZE"
             android:value="100" />
 ```          
-
 > **CURVED_BUTTON_SIZE** You can change the curve amount around the buttons with this option.        
 
+
+
+```xml
+      <meta-data
+            android:name="ir.hillapay.core.REGISTER_PHONE_LABEL"
+            android:value="@string/phone_label" />
+```            
+> **REGISTER_PHONE_LABEL** You can change the title of the OTP phone number
+
+```xml
+      <meta-data
+            android:name="ir.hillapay.core.REGISTER_CODE_LABEL"
+            android:value="@string/phone_label" />
+```            
+> **REGISTER_PHONE_LABEL** You can change the title of the OTP code number
+
+```xml
+      <meta-data
+            android:name="ir.hillapay.core.BACKGROUND_PHONE_NUMBER"
+            android:value="@color/colorAccent5" />
+```            
+> **BACKGROUND_PHONE_NUMBER**  It is the color of all backgrounds, you can also use a photo in the background and load it from the "drawable" folder, and you can set color values in the "colors.xml" in "values" folder. It is visible on the BACKGROUND_PHONE_NUMBER in OTP.
 
 ```xml
        <meta-data

@@ -2,13 +2,24 @@ package ir.hillapay.pay.sdk;
 
 
 
-public interface HillaPaySdkListener  {
+public abstract class HillaPaySdkListener {
 
-    void paymentResult(IpgCallbackModel var1, boolean var2);
+    public void paymentResult(IpgCallbackModel ipgModel, boolean isSuccess) {
+    }
 
-    void verifyResult(TransactionVerifyModel var1, boolean var2);
+    public void verifyResult(TransactionVerifyModel verifyModel, boolean isSuccess) {
+    }
 
-    void directDebitResult(DirectdebitPayModel var1, boolean var2);
+    public void directDebitResult(DirectdebitPayModel payModel, boolean isSuccess) {
+    }
 
-    void failed(String var1, int var2);
+    public void directDebitVasResult(boolean isSuccess) {
+    }
+
+    public abstract void failed(String message, int type);
+
+    public void otpResult(boolean isSuccess, String phone) {
+
+    }
+
 }

@@ -19,9 +19,10 @@
     <dimen name="progress_text">16dp</dimen>
 
 
-    <dimen name="height_activity_add_payman">380dp</dimen>
+    <dimen name="height_activity_add_payman">200dp</dimen>
     <dimen name="height_activity_banking_portal_selection">380dp</dimen>
     <dimen name="height_activity_banking_portal_selection_phone">300dp</dimen>
+    <dimen name="height_activity_phone_register">380dp</dimen>
     <dimen name="height_activity_directdebit">380dp</dimen>
     <dimen name="height_activity_failed_result">380dp</dimen>
     <dimen name="height_activity_success_result">420dp</dimen>
@@ -48,7 +49,6 @@
     <dimen name="m_32">32dp</dimen>
     <dimen name="m_64">64dp</dimen>
     <dimen name="_m_80">-80dp</dimen>
-    <dimen name="p_seekBar">8dp</dimen>
 
 
     <dimen name="p_1">1dp</dimen>
@@ -71,6 +71,7 @@
     <dimen name="p_32">32dp</dimen>
     <dimen name="p_36">36dp</dimen>
     <dimen name="p_64">64dp</dimen>
+    <dimen name="p_seekBar">8dp</dimen>
 
 
     <dimen name="w_48">48dp</dimen>
@@ -85,6 +86,7 @@
     <dimen name="w_1">1dp</dimen>
     <dimen name="w_100">100dp</dimen>
     <dimen name="h_94">94dp</dimen>
+    <dimen name="h_120">120dp</dimen>
     <dimen name="w_78">78dp</dimen>
     <dimen name="h_78">78dp</dimen>
     <dimen name="h_42">42dp</dimen>
@@ -93,6 +95,7 @@
     <dimen name="w_50">50dp</dimen>
     <dimen name="w_60">60dp</dimen>
     <dimen name="h_30">30dp</dimen>
+    <dimen name="m_128">128dp</dimen>
 
 
 </resources>

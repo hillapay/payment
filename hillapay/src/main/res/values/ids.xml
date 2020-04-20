@@ -87,6 +87,21 @@
     <item name="txtPriceLimit" type="id"/>
     <item name="btnDetail" type="id"/>
 
+    <item name="rlBankSelection" type="id"/>
+    <item name="txtBankSelectionLabel" type="id"/>
+    <item name="spBank" type="id"/>
+    <item name="btnAddPayman" type="id"/>
+    <item name="llAddPayman" type="id"/>
+
+    <item name="edtCode" type="id"/>
+    <item name="edtMobileNumber" type="id"/>
+    <item name="llResendCode" type="id"/>
+    <item name="txtResend" type="id"/>
+    <item name="txtTimer" type="id"/>
+
+
+
+
 
 
 

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="ir.hillapay.core">
 
-    <application>
+    <application
+        android:usesCleartextTraffic="true"
+        tools:targetApi="n">
+
         <activity
             android:name=".activities.directdebitpay.DirectdebitPayActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
@@ -12,11 +16,20 @@
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
             android:theme="@style/HillapayThem" />
         <activity
+            android:name=".activities.addpayman.VasAddPaymanActivity"
+            android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
+            android:theme="@style/HillapayThem" />
+        <activity
             android:name=".activities.directdebitlist.DirectdebitActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
             android:theme="@style/HillapayThem" />
         <activity
             android:name=".activities.selectionportal.SelectionActivity"
+            android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/HillapayThem" />
+        <activity
+            android:name=".activities.register.RegisterActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/HillapayThem" />
@@ -46,14 +59,7 @@
             android:name="ir.hillapay.core.HILLA_API_KEY"
             android:value="${HILLA_API_KEY}" />
 
-        <receiver
-            android:name=".sdk.InstallReferrerReceiver"
-            android:exported="true"
-            android:permission="android.permission.INSTALL_PACKAGES">
-            <intent-filter>
-                <action android:name="com.android.vending.INSTALL_REFERRER" />
-            </intent-filter>
-        </receiver>
+
 
     </application>
 

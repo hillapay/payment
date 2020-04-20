@@ -98,13 +98,54 @@
                 android:text="مبلغ" />
         </LinearLayout>
 
-
         <Button
             android:id="@+id/btnPayment"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="پرداخت" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorAccent"/>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnVasCreatePayman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="ایجاد پیمان وس" />
+
+            <Button
+                android:id="@+id/btnCheckActiveUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="اطلااع از وضعیت کاربر وس" />
+
+            <Button
+                android:id="@+id/btnOtpRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="ثبت نام" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnUnsubscribUserVas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="غیر فعال کردن کاربر وس" />
+
 
 
 

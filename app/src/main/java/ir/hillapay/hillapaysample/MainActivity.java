@@ -15,12 +15,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import ir.hillapay.pay.sdk.DirectdebitPayModel;
 import ir.hillapay.pay.sdk.HillaErrorType;
+import ir.hillapay.pay.sdk.HillaPayActiveUserListener;
 import ir.hillapay.pay.sdk.HillaPaySdk;
+import ir.hillapay.pay.sdk.HillaPayUnSubscribeUserListener;
+import ir.hillapay.pay.sdk.HillaPaymentConfig;
+import ir.hillapay.pay.sdk.HillaVasActiveType;
 import ir.hillapay.pay.sdk.IpgCallbackModel;
 import ir.hillapay.pay.sdk.HillaPaySdkListener;
 import ir.hillapay.pay.sdk.TransactionVerifyModel;
-
-import static ir.hillapay.pay.sdk.HillaPaySdk.verify;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -42,14 +44,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         btnPayment.setOnClickListener(this);
+        findViewById(R.id.btnCheckActiveUser).setOnClickListener(this);
+        findViewById(R.id.btnUnsubscribUserVas).setOnClickListener(this);
+        findViewById(R.id.btnOtpRegister).setOnClickListener(this);
+        findViewById(R.id.btnVasCreatePayman).setOnClickListener(this);
 
 //        uid = UUID.randomUUID().toString();
         uid = "1";
+        HillaPaymentConfig config= new HillaPaymentConfig.Builder()
+                .setDirectdebitDailyWithdrawCount(3)
+                .setDirectdebitMonthlyWithdrawCount(30)
+                .showFirstLevel(true)
+                .build();
 
-        HillaPaySdk.register(this, uid);
+        HillaPaySdk.init(this, uid, config);
 
 
         HillaPaySdk.openTrack(this, uid);
+
+//
 
     }
 
@@ -58,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        HillaPaySdk.getPaymentResult(requestCode, resultCode, data, new HillaPaySdkListener() {
+        HillaPaySdk.getSdkResult(requestCode, resultCode, data, new HillaPaySdkListener() {
 
             @Override
             public void paymentResult(IpgCallbackModel ipgModel, boolean isSuccess) {
@@ -75,8 +88,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Spanned sp = Html.fromHtml(verifyModel.toString() + "    status: " + isSuccess);
                 txtResult.setText(sp);
+            }
 
+            @Override
+            public void directDebitVasResult(boolean isSuccess) {
+                // TODO: use result
+            }
 
+            @Override
+            public void otpResult(boolean isSuccess, String phone) {
+                // TODO: use results
             }
 
             @Override
@@ -98,6 +119,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v.getId() == R.id.btnPayment)
             payment();
+        else if (v.getId() == R.id.btnCheckActiveUser)
+            HillaPaySdk.VAS.checkActiveUser(MainActivity.this, uid, new HillaPayActiveUserListener() {
+                @Override
+                public void onResult(@HillaVasActiveType int active) {
+                    txtResult.setText("checkActiveUser result :" + active);
+                }
+
+                @Override
+                public void onFailed(String message, int errorType) {
+                    Toast.makeText(MainActivity.this, "checkActiveUser:" + message, Toast.LENGTH_SHORT).show();
+                }
+            });
+        else if (v.getId() == R.id.btnVasCreatePayman)
+            HillaPaySdk.VAS.createPayman(MainActivity.this, uid);
+        else if (v.getId() == R.id.btnOtpRegister)
+            HillaPaySdk.OTP.phoneRegister(this, uid);
+        else if (v.getId() == R.id.btnUnsubscribUserVas)
+            HillaPaySdk.VAS.unsubscribeUser(MainActivity.this, uid, new HillaPayUnSubscribeUserListener() {
+                @Override
+                public void onResult(boolean unSubscribe) {
+                    txtResult.setText("unSubscribe result :" + unSubscribe);
+                }
+
+                @Override
+                public void onFailed(String message, int errorType) {
+                    Toast.makeText(MainActivity.this, "unsubscribeUser:" + message, Toast.LENGTH_SHORT).show();
+                }
+            });
+
 
     }
 
