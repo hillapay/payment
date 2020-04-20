@@ -321,3 +321,6 @@ Open the AndroidManifest and paste the below code:
 ##### Download the Persian version in PDF
 
 [https://github.com/hillapay/HillaPaySample/blob/master/hillapay.pdf](https://github.com/hillapay/HillaPaySample/blob/master/hillapay.pdf)
+
+
+[hilla]: http://hillavas.com/ "Hillavas"
