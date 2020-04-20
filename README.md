@@ -1,6 +1,6 @@
 # Hillapay
 
-[![](https://travis-ci.org/joemccann/dillinger.svg?branch=master)]([hilla vas](http://hillavas.com/ "hilla vas")
+[HillaVas][hilla]
  
 [![](https://jitpack.io/v/hillapay/payment.svg)](https://jitpack.io/#hillapay/payment)
 
