@@ -31,7 +31,7 @@ Let's have a look at it.
 ##### Add the dependency
 ```groovy
  dependencies {
-            implementation 'com.github.hillapay:payment:v1.4.0'
+            implementation 'com.github.hillapay:payment:v1.4.1'
    }
 ```
 #### 2. Add API key in build.gradle(app)
@@ -148,7 +148,7 @@ HillapaySdk. verify(activityContext, uid, ipgModel)
 
 >**ipgModel:** Payment must be verified when using IPG, Get ipgModel from paymentResult callback
 
-#### OPT
+#### OTP
 You can use the OTP login instead of having a server login yourself to be able to use this feature, and you must call the following method.
 ```sh
 HillaPaySdk.OTP.phoneRegister(activityContext,uid);
