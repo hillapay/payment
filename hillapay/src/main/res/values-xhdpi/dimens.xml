@@ -22,7 +22,7 @@
     <dimen name="height_activity_add_payman">180dp</dimen>
     <dimen name="height_activity_banking_portal_selection">290dp</dimen>
     <dimen name="height_activity_banking_portal_selection_phone">200dp</dimen>
-    <dimen name="height_activity_phone_register">290</dimen>
+    <dimen name="height_activity_phone_register">290dp</dimen>
     <dimen name="height_activity_directdebit">290dp</dimen>
     <dimen name="height_activity_failed_result">290dp</dimen>
     <dimen name="height_activity_success_result">290dp</dimen>
