@@ -1,10 +1,8 @@
 package ir.hillapay.pay.sdk;
 
+public interface HillaPayVasReportListener {
 
-
-public interface HillaPayUnSubscribeUserListener {
-
-    void onResult(boolean unSubscribe);
+    void onResult(HillaVasReportModel report);
 
     void onFailed(String message, @HillaErrorType int errorType);
 

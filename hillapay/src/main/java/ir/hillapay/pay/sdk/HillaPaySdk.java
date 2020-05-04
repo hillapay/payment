@@ -4,41 +4,60 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import ir.hillapay.core.activities.addpayman.VasAddPaymanActivity;
-import ir.hillapay.core.publicmodel.IpgCallbackModel;
-import ir.hillapay.core.publicmodel.DirectdebitPayModel;
-import ir.hillapay.core.publicmodel.TransactionVerifyModel;
-import ir.hillapay.core.sdk.PaymentConfig;
+import ir.hillapay.core.publicmodel.CoreDirectdebitPayModel;
+import ir.hillapay.core.publicmodel.CoreHillaVasReportModel;
+import ir.hillapay.core.publicmodel.CoreIpgCallbackModel;
+import ir.hillapay.core.publicmodel.CoreTransactionVerifyModel;
+import ir.hillapay.core.sdk.CoreHillaPayActiveUserListener;
+import ir.hillapay.core.sdk.CoreHillaPaySdk;
+import ir.hillapay.core.sdk.CoreHillaPaySdkListener;
+import ir.hillapay.core.sdk.CoreHillaPayVasReportListener;
+import ir.hillapay.core.sdk.CorePaymentConfig;
+import ir.hillapay.core.sdk.CoreVasConfig;
 
 
 public class HillaPaySdk {
 
 
     public static void init(Context context, String uid) {
-        ir.hillapay.core.sdk.HillaPaySdk.register(context, uid);
+        CoreHillaPaySdk.coreRegister(context, uid);
     }
 
     public static void init(Context context, String uid, HillaPaymentConfig config) {
 
-        PaymentConfig paymentConfig = new PaymentConfig.Builder()
-                .showFirstLevel(config.showFirsLevel())
-                .setDirectdebitDailyWithdrawCount(config.getDirectdebitDailyWithdrawCount())
-                .setDirectdebitMonthlyWithdrawCount(config.getDirectdebitMonthlyWithdrawCount())
-                .build();
+        if (config != null) {
+            VasConfig vasConfig = config.getVasConfig();
+            String registerPhoneNumber = "";
+            if (vasConfig != null) {
+                if (vasConfig.getUserPhoneNumber() != null)
+                    registerPhoneNumber = vasConfig.getUserPhoneNumber();
+            }
+            CorePaymentConfig paymentConfig = new CorePaymentConfig.Builder()
+                    .showFirstLevel(config.showFirsLevel())
+                    .setDirectdebitDailyWithdrawCount(config.getDirectdebitDailyWithdrawCount())
+                    .setDirectdebitMonthlyWithdrawCount(config.getDirectdebitMonthlyWithdrawCount())
+                    .addVasConfig(
+                            new CoreVasConfig.Builder()
+                                    .setUserPhoneNumber(registerPhoneNumber)
+                                    .build()
+                    )
+                    .build();
 
-        ir.hillapay.core.sdk.HillaPaySdk.register(context, uid, paymentConfig);
+            CoreHillaPaySdk.coreRegister(context, uid, paymentConfig);
+        } else
+            CoreHillaPaySdk.coreRegister(context, uid);
     }
 
     public static void openTrack(Activity context, String uid) {
-        ir.hillapay.core.sdk.HillaPaySdk.openTrack(context, uid);
+        CoreHillaPaySdk.coreOpenTrack(context, uid);
     }
 
     public static void closeTrack(Activity context, String uid) {
-        ir.hillapay.core.sdk.HillaPaySdk.closeTrack(context, uid);
+        CoreHillaPaySdk.coreCloseTrack(context, uid);
     }
 
     public static void tracker(Activity context, String uid, String action, String description) {
-        ir.hillapay.core.sdk.HillaPaySdk.tracker(context, uid, action, description);
+        CoreHillaPaySdk.coreTracker(context, uid, action, description);
     }
 
     /**
@@ -55,13 +74,13 @@ public class HillaPaySdk {
     public static void payment(Activity context, String amount, String phone, String orderId,
                                String description, String uid, String additionalData, String sku,
                                boolean phoneByUser) {
-        ir.hillapay.core.sdk.HillaPaySdk.payment(context, amount, phone, orderId,
+        CoreHillaPaySdk.corePayment(context, amount, phone, orderId,
                 description, uid, additionalData, sku, phoneByUser);
 
     }
 
-    public static void verify(Activity context, String uid, ir.hillapay.pay.sdk.IpgCallbackModel ipgCallbackModel) {
-        ir.hillapay.core.publicmodel.IpgCallbackModel ipgModel = new ir.hillapay.core.publicmodel.IpgCallbackModel(
+    public static void verify(Activity context, String uid, IpgCallbackModel ipgCallbackModel) {
+        CoreIpgCallbackModel ipgModel = new CoreIpgCallbackModel(
                 ipgCallbackModel.getTransactionId(),
                 ipgCallbackModel.getOrderId(),
                 ipgCallbackModel.getStatusCode(),
@@ -70,14 +89,14 @@ public class HillaPaySdk {
                 ipgCallbackModel.getReturnAmount(),
                 ipgCallbackModel.getReturnRrn(),
                 ipgCallbackModel.isSuccess());
-        ir.hillapay.core.sdk.HillaPaySdk.verify(context, uid, ipgModel);
+        CoreHillaPaySdk.coreVerify(context, uid, ipgModel);
     }
 
-    public static void getSdkResult(int requestCode, int resultCode, Intent data, final ir.hillapay.pay.sdk.HillaPaySdkListener sdkListener) {
-        ir.hillapay.core.sdk.HillaPaySdk.getPaymentResult(requestCode, resultCode, data, new ir.hillapay.core.sdk.HillaPaySdkListener() {
+    public static void getSdkResult(int requestCode, int resultCode, Intent data, final HillaPaySdkListener sdkListener) {
+        CoreHillaPaySdk.coreGetPaymentResult(requestCode, resultCode, data, new CoreHillaPaySdkListener() {
             @Override
-            public void paymentResult(IpgCallbackModel ipgModel, boolean isSuccess) {
-                ir.hillapay.pay.sdk.IpgCallbackModel ipgCallbackModel = new ir.hillapay.pay.sdk.IpgCallbackModel(
+            public void paymentResult(CoreIpgCallbackModel ipgModel, boolean isSuccess) {
+                IpgCallbackModel ipgCallbackModel = new IpgCallbackModel(
                         ipgModel.getTransactionId(),
                         ipgModel.getOrderId(),
                         ipgModel.getStatusCode(),
@@ -90,7 +109,7 @@ public class HillaPaySdk {
             }
 
             @Override
-            public void verifyResult(TransactionVerifyModel verifyModel, boolean isSuccess) {
+            public void verifyResult(CoreTransactionVerifyModel verifyModel, boolean isSuccess) {
 
                 BankModel bankModel = new BankModel(
                         verifyModel.getBank().getId(),
@@ -102,7 +121,7 @@ public class HillaPaySdk {
                         verifyModel.getTerminal().getId(),
                         verifyModel.getTerminal().getTitle());
 
-                ir.hillapay.pay.sdk.TransactionVerifyModel transactionVerifyModel = new ir.hillapay.pay.sdk.TransactionVerifyModel(
+                TransactionVerifyModel transactionVerifyModel = new TransactionVerifyModel(
                         verifyModel.getTransactionId(),
                         verifyModel.getOrderId(),
                         verifyModel.getCard(),
@@ -113,7 +132,7 @@ public class HillaPaySdk {
             }
 
             @Override
-            public void directDebitResult(DirectdebitPayModel payModel, boolean isSuccess) {
+            public void directDebitResult(CoreDirectdebitPayModel payModel, boolean isSuccess) {
                 BankModel bankModel = new BankModel(
                         payModel.getBank().getId(),
                         payModel.getBank().getWithdrawalType(),
@@ -124,7 +143,7 @@ public class HillaPaySdk {
                         payModel.getTerminal().getId(),
                         payModel.getTerminal().getTitle());
 
-                ir.hillapay.pay.sdk.DirectdebitPayModel directdebitPayModel = new ir.hillapay.pay.sdk.DirectdebitPayModel(
+                DirectdebitPayModel directdebitPayModel = new DirectdebitPayModel(
                         payModel.getTransactionId(),
                         payModel.getOrderId(),
                         payModel.getTransactionAmount(),
@@ -147,6 +166,11 @@ public class HillaPaySdk {
             }
 
             @Override
+            public void unsubscribeUser(boolean b) {
+                sdkListener.unsubscribeUserResult(b);
+            }
+
+            @Override
             public void failed(String message, @HillaErrorType int errorType) {
                 sdkListener.failed(message, errorType);
             }
@@ -157,7 +181,7 @@ public class HillaPaySdk {
 
         public static void checkActiveUser(Activity context, String uid, final HillaPayActiveUserListener listener) {
 
-            ir.hillapay.core.sdk.HillaPaySdk.VAS.checkActiveUser(context, uid, new ir.hillapay.core.sdk.HillaPayActiveUserListener() {
+            CoreHillaPaySdk.CoreVAS.coreCheckActiveUser(context, uid, new CoreHillaPayActiveUserListener() {
                 @Override
                 public void onResult(int i) {
                     listener.onResult(i);
@@ -170,28 +194,35 @@ public class HillaPaySdk {
             });
         }
 
-        public static void unsubscribeUser(Activity context, String uid, final HillaPayUnSubscribeUserListener listener) {
-            ir.hillapay.core.sdk.HillaPaySdk.VAS.unsubscribeUser(context, uid, new ir.hillapay.core.sdk.HillaPayUnSubscribeUserListener() {
+        public static void unsubscribeUser(Activity context, String uid) {
+            CoreHillaPaySdk.CoreVAS.coreUnsubscribeUser(context, uid);
+        }
+
+        public static void createPayman(Activity context, String uid) {
+            CoreHillaPaySdk.CoreVAS.coreCreatePayman(context, uid);
+        }
+
+        public static void getReport(Activity context, String uid, final HillaPayVasReportListener listener) {
+            CoreHillaPaySdk.CoreVAS.coreGetReport(context, uid, new CoreHillaPayVasReportListener() {
                 @Override
-                public void onResult(boolean b) {
-                    listener.onResult(b);
+                public void onResult(CoreHillaVasReportModel hillaVasReportModel) {
+                    HillaVasReportModel reportModel = new HillaVasReportModel(
+                            hillaVasReportModel.countAmount,
+                            hillaVasReportModel.totalAmount);
+                    listener.onResult(reportModel);
                 }
 
                 @Override
                 public void onFailed(String s, int i) {
-                    listener.onFailed(s, i);
+
                 }
             });
-        }
-
-        public static void createPayman(Activity context, String uid) {
-            ir.hillapay.core.sdk.HillaPaySdk.VAS.createPayman(context, uid);
         }
     }
 
     public static class OTP {
         public static void phoneRegister(Activity context, String uid) {
-            ir.hillapay.core.sdk.HillaPaySdk.OTP.register(context, uid);
+            CoreHillaPaySdk.CoreOTP.coreRegister(context, uid);
         }
     }
 

@@ -19,7 +19,7 @@
     <dimen name="progress_text">16dp</dimen>
 
 
-    <dimen name="height_activity_add_payman">200dp</dimen>
+    <dimen name="height_activity_add_payman">250dp</dimen>
     <dimen name="height_activity_banking_portal_selection">380dp</dimen>
     <dimen name="height_activity_banking_portal_selection_phone">300dp</dimen>
     <dimen name="height_activity_phone_register">380dp</dimen>

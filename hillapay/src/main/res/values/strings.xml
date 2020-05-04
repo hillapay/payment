@@ -57,6 +57,7 @@
     <string name="monthly_count">تعداد مجاز در ماه:</string>
     <string name="payman_form">فرم قرار داد</string>
     <string name="add_payman">افزودن حساب</string>
+    <string name="task_continue">ادامه</string>
     <string name="dee">test</string>
     <string name="price_limit">سقف مجاز:</string>
     <string name="select_account">انتخاب حساب</string>
@@ -75,6 +76,9 @@
     <string name="invalid_sms_code">کد نادرست است</string>
     <string name="invalid_phone_number">شماره نادرست است</string>
     <string name="user_vas_not_registered">The user has not been register yet</string>
+    <string name="not_set_phone_number">The phone number is not set</string>
+    <string name="dot">•</string>
+    <string name="service_info">درباره سرویس پرداخت</string>
 
 
 </resources>

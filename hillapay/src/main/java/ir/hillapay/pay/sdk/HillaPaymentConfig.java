@@ -9,6 +9,11 @@ public class HillaPaymentConfig {
     private int directdebitDailyWithdrawCount;
     private boolean addPhoneByUser;
     private boolean showFirsLevel;
+    private VasConfig vasConfig;
+
+    public VasConfig getVasConfig() {
+        return vasConfig;
+    }
 
     public int getDirectdebitMonthlyWithdrawCount() {
         return directdebitMonthlyWithdrawCount;
@@ -32,6 +37,7 @@ public class HillaPaymentConfig {
         directdebitMonthlyWithdrawCount = builder.directdebitMonthlyWithdrawCount;
         directdebitDailyWithdrawCount = builder.directdebitDailyWithdrawCount;
         showFirsLevel = builder.showFirsLevel;
+        vasConfig = builder.vasConfig;
 
     }
 
@@ -42,6 +48,7 @@ public class HillaPaymentConfig {
         private int directdebitDailyWithdrawCount = 1;
         private boolean addPhoneByUser = false;
         private boolean showFirsLevel = true;
+        private VasConfig vasConfig ;
 
         public Builder setDirectdebitMonthlyWithdrawCount(int monthlyCount) {
             this.directdebitMonthlyWithdrawCount = monthlyCount;
@@ -55,6 +62,12 @@ public class HillaPaymentConfig {
 
         private Builder addPhoneByUser(boolean phoneByUser) {
             this.addPhoneByUser = phoneByUser;
+            return this;
+        }
+
+        public Builder addVasConfig(VasConfig vasConfig)
+        {
+            this.vasConfig=vasConfig;
             return this;
         }
 

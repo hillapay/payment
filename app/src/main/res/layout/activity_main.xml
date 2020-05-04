@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,15 +40,15 @@
         </LinearLayout>
 
         <EditText
-            android:visibility="gone"
             android:id="@+id/edtDate"
             android:layout_width="200dp"
+            android:layout_height="wrap_content"
             android:clickable="true"
 
-            android:layout_height="wrap_content"
+            android:focusable="true"
             android:gravity="center"
             android:padding="4dp"
-            android:focusable="true" />
+            android:visibility="gone" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,9 +69,9 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="14sp"
                 android:inputType="phone"
-                android:text="شماره تلفن" />
+                android:text="شماره تلفن"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -80,22 +81,22 @@
             android:gravity="center">
 
             <EditText
-                android:hint="ریال"
                 android:id="@+id/edtAmount"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:hint="ریال"
                 android:inputType="phone"
                 android:padding="4dp" />
 
             <TextView
-                android:textSize="14sp"
                 android:id="@+id/txtLabelAmount"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:inputType="phone"
-                android:text="مبلغ" />
+                android:text="مبلغ"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <Button
@@ -109,12 +110,12 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorAccent"/>
+            android:background="@color/colorAccent" />
 
         <LinearLayout
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/btnVasCreatePayman"
@@ -139,14 +140,25 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnUnsubscribUserVas"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="غیر فعال کردن کاربر وس" />
+            android:gravity="center">
 
+            <Button
+                android:id="@+id/btnUnsubscribUserVas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="غیر فعال کردن کاربر وس" />
 
+            <Button
+                android:id="@+id/btnReportUserVas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="گزارش کاربر وس" />
+        </LinearLayout>
 
 
     </LinearLayout>

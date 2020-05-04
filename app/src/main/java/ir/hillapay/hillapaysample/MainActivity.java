@@ -18,11 +18,14 @@ import ir.hillapay.pay.sdk.HillaErrorType;
 import ir.hillapay.pay.sdk.HillaPayActiveUserListener;
 import ir.hillapay.pay.sdk.HillaPaySdk;
 import ir.hillapay.pay.sdk.HillaPayUnSubscribeUserListener;
+import ir.hillapay.pay.sdk.HillaPayVasReportListener;
 import ir.hillapay.pay.sdk.HillaPaymentConfig;
 import ir.hillapay.pay.sdk.HillaVasActiveType;
+import ir.hillapay.pay.sdk.HillaVasReportModel;
 import ir.hillapay.pay.sdk.IpgCallbackModel;
 import ir.hillapay.pay.sdk.HillaPaySdkListener;
 import ir.hillapay.pay.sdk.TransactionVerifyModel;
+import ir.hillapay.pay.sdk.VasConfig;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -48,12 +51,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btnUnsubscribUserVas).setOnClickListener(this);
         findViewById(R.id.btnOtpRegister).setOnClickListener(this);
         findViewById(R.id.btnVasCreatePayman).setOnClickListener(this);
+        findViewById(R.id.btnReportUserVas).setOnClickListener(this);
 
 //        uid = UUID.randomUUID().toString();
         uid = "1";
-        HillaPaymentConfig config= new HillaPaymentConfig.Builder()
+        HillaPaymentConfig config = new HillaPaymentConfig.Builder()
                 .setDirectdebitDailyWithdrawCount(3)
                 .setDirectdebitMonthlyWithdrawCount(30)
+                .addVasConfig(new VasConfig.Builder().setUserPhoneNumber("09352830038").build())
                 .showFirstLevel(true)
                 .build();
 
@@ -107,6 +112,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
+            public void unsubscribeUserResult(boolean isSuccess) {
+                // TODO: use results
+            }
+
+            @Override
             public void failed(String message, @HillaErrorType int errorType) {
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
             }
@@ -136,17 +146,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if (v.getId() == R.id.btnOtpRegister)
             HillaPaySdk.OTP.phoneRegister(this, uid);
         else if (v.getId() == R.id.btnUnsubscribUserVas)
-            HillaPaySdk.VAS.unsubscribeUser(MainActivity.this, uid, new HillaPayUnSubscribeUserListener() {
+            HillaPaySdk.VAS.unsubscribeUser(MainActivity.this, uid);
+        else if (v.getId() == R.id.btnReportUserVas) {
+            HillaPaySdk.VAS.getReport(MainActivity.this, uid, new HillaPayVasReportListener() {
                 @Override
-                public void onResult(boolean unSubscribe) {
-                    txtResult.setText("unSubscribe result :" + unSubscribe);
+                public void onResult(HillaVasReportModel report) {
+                    Toast.makeText(MainActivity.this,
+                            "count: " + report.getCountAmount() +
+                                    "\n total Amount: " + report.getTotalAmount()
+                            , Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
                 public void onFailed(String message, int errorType) {
-                    Toast.makeText(MainActivity.this, "unsubscribeUser:" + message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "report:" + message, Toast.LENGTH_SHORT).show();
                 }
             });
+        }
 
 
     }

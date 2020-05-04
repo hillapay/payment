@@ -100,6 +100,14 @@
     <item name="txtTimer" type="id"/>
 
 
+    <item name="txtServiceInfo" type="id"/>
+    <item name="txtDotServiceInfo" type="id"/>
+    <item name="rlServiceInfo" type="id"/>
+    <item name="imgBankSelectionLabel" type="id"/>
+    <item name="rlBankSelectionLabel" type="id"/>
+    <item name="rlWebUrl" type="id"/>
+
+
 
 
 

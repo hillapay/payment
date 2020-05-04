@@ -21,5 +21,8 @@ public abstract class HillaPaySdkListener {
     public void otpResult(boolean isSuccess, String phone) {
 
     }
+    public void unsubscribeUserResult(boolean isSuccess) {
+
+    }
 
 }

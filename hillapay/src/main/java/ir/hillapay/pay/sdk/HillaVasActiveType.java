@@ -3,15 +3,15 @@ package ir.hillapay.pay.sdk;
 
 import java.lang.annotation.Retention;
 
-import ir.hillapay.core.types.HillaIntDef;
+import ir.hillapay.core.types.CoreHillaIntDef;
 
-import static ir.hillapay.core.types.HillaVasActiveType.Expire;
-import static ir.hillapay.core.types.HillaVasActiveType.Subscribe;
-import static ir.hillapay.core.types.HillaVasActiveType.Unsubscribe;
+import static ir.hillapay.core.types.CoreHillaVasActiveType.Expire;
+import static ir.hillapay.core.types.CoreHillaVasActiveType.Subscribe;
+import static ir.hillapay.core.types.CoreHillaVasActiveType.Unsubscribe;
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 
 @Retention(SOURCE)
-@HillaIntDef({
+@CoreHillaIntDef({
         Subscribe,
         Unsubscribe,
         Expire

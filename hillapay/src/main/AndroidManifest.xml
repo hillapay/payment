@@ -18,6 +18,12 @@
         <activity
             android:name=".activities.addpayman.VasAddPaymanActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/HillapayThem" />
+        <activity
+            android:name=".activities.unsubscribe.UnsubscribeActivity"
+            android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
             android:theme="@style/HillapayThem" />
         <activity
             android:name=".activities.directdebitlist.DirectdebitActivity"
