@@ -71,7 +71,7 @@ HillaPaySdk.init(this, uid,config);
 
 >**DirectdebitMonthlyWithdrawCount:** This field is the number of harvests per month, which is 3 by default
 
->**VasConfig:**When you want to use the X feature, you can do some adjustments with this field
+>**VasConfig:** When you want to use the VAS feature, you can do some adjustments with this field
 
 #####  VasConfig
 >**UserPhoneNumber:**When you want to use the VAS service, you must either use OTP or enter the phone number yourself, with which you can enter the number without the need for OTP.
