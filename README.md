@@ -71,10 +71,11 @@ HillaPaySdk.init(this, uid,config);
 
 >**DirectdebitMonthlyWithdrawCount:** This field is the number of harvests per month, which is 3 by default
 
->**VasConfig:** When you want to use the VAS feature, you can do some adjustments with this field
+>**VasConfig:** By making some adjustments to this filed, you can sue the M-VAS feature.
 
 #####  VasConfig
->**UserPhoneNumber:**When you want to use the VAS service, you must either use OTP or enter the phone number yourself, with which you can enter the number without the need for OTP.
+>**UserPhoneNumber:** When you want to use M-VAS services, it is required to do an OTP or enter your mobile phone number. By using this filed, you may only enter the phone number, and there is no need to do the OTP process.
+
 
 
 #### 5. Request payment
@@ -154,7 +155,7 @@ public class Activity
 
 >**otpResult callback:** This method called when you had used OTP as a login.
 
->**unsubscribeUserResult callback:** This method called when you had used OTP as a unsubscribe user.
+>**unsubscribeUserResult callback:**  This method called when you had used OTP as a unsubscribe user. 
 
 #### 7.Verify the payment
 
@@ -172,10 +173,10 @@ HillaPaySdk.OTP.phoneRegister(activityContext,uid);
 The answer to this method returned in OnActivityResult, which is in the otpResult method.
 
 #### M-VAS (Mobile Value Added Services)
-To use the M-VAS capabilities, you must first log in with OTP ( or added user phone number by VasConfig in init sdk ) and then follow the steps below.
+To use the M-VAS capabilities, you must first log in with OTP (or added user phone number by VasConfig in init SDK) and then follow the steps below.
 
 #### 1. otpRegister
-If you have added a user's phone number with VasConfig, ignore this step
+Ignore this step If you have added a user's phone number with VasConfig.
 ```sh
  HillaPaySdk.OTP.phoneRegister(activityContext, uid);
 ```
@@ -216,13 +217,13 @@ HillaPaySdk.VAS.createPayman(activityContext, uid);
 The answer to this method is returned in OnActivityResult, which is in the directDebitVasResult method.
 
 #### 4. Unsubscribe User
-You can cancel the user contract using the following method.
+You may cancel the contract of the user by using the following method.
 ```sh
 HillaPaySdk.VAS.unsubscribeUser(MainActivity.this, uid);
 ```
 
 #### 4. Report
-You can report user payments with this method.
+You may get the report of user payments with this method.
 
 ```sh
 HillaPaySdk.VAS.getReport(MainActivity.this, uid, new HillaPayVasReportListener() {
