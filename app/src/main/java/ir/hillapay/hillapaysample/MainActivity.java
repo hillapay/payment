@@ -55,10 +55,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 //        uid = UUID.randomUUID().toString();
         uid = "1";
+
+        VasConfig vasConfig =new VasConfig.Builder()
+                .setUserPhoneNumber("09352830038")
+                .build();
+
         HillaPaymentConfig config = new HillaPaymentConfig.Builder()
                 .setDirectdebitDailyWithdrawCount(3)
                 .setDirectdebitMonthlyWithdrawCount(30)
-                .addVasConfig(new VasConfig.Builder().setUserPhoneNumber("09352830038").build())
+                .addVasConfig(vasConfig)
                 .showFirstLevel(true)
                 .build();
 

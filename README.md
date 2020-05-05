@@ -31,7 +31,7 @@ Let's have a look at it.
 ##### Add the dependency
 ```groovy
  dependencies {
-            implementation 'com.github.hillapay:payment:v1.4.1'
+            implementation 'com.github.hillapay:payment:v1.4.2'
    }
 ```
 #### 2. Add API key in build.gradle(app)
@@ -52,9 +52,14 @@ HillaPaySdk.init(this, uid);
 or
 
 ```sh
-HillaPaymentConfig config= new HillaPaymentConfig.Builder()
+VasConfig vasConfig =new VasConfig.Builder()
+                .setUserPhoneNumber("user phone number")
+                .build();
+
+        HillaPaymentConfig config = new HillaPaymentConfig.Builder()
                 .setDirectdebitDailyWithdrawCount(3)
                 .setDirectdebitMonthlyWithdrawCount(30)
+                .addVasConfig(vasConfig)
                 .showFirstLevel(true)
                 .build();
 
@@ -65,6 +70,12 @@ HillaPaySdk.init(this, uid,config);
 >**DirectdebitDailyWithdrawCount:** This field is the number of harvests per day, which is 1 by default.
 
 >**DirectdebitMonthlyWithdrawCount:** This field is the number of harvests per month, which is 3 by default
+
+>**VasConfig:**When you want to use the X feature, you can do some adjustments with this field
+
+#####  VasConfig
+>**UserPhoneNumber:**When you want to use the VAS service, you must either use OTP or enter the phone number yourself, with which you can enter the number without the need for OTP.
+
 
 #### 5. Request payment
 ```sh
@@ -109,20 +120,23 @@ public class Activity
             public void failed(String message, @HillaErrorType int errorType) {
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
             }
-            
+
             @Override
             public void directDebitVasResult(boolean isSuccess) {
                 // TODO: use result  
             }
-            
+
             @Override
             public void otpResult(boolean isSuccess, String phone) {
                 // TODO: use results  
             }
-            
+
+			@Override
+            public void unsubscribeUserResult(boolean isSuccess) {
+                // TODO: use results
+            }
+
             });
-        
- 			
 
     }
 }
@@ -140,6 +154,8 @@ public class Activity
 
 >**otpResult callback:** This method called when you had used OTP as a login.
 
+>**unsubscribeUserResult callback:** This method called when you had used OTP as a unsubscribe user.
+
 #### 7.Verify the payment
 
 ```sh
@@ -156,13 +172,14 @@ HillaPaySdk.OTP.phoneRegister(activityContext,uid);
 The answer to this method returned in OnActivityResult, which is in the otpResult method.
 
 #### M-VAS (Mobile Value Added Services)
-To use the M-VAS capabilities, you must first log in with OTP and then follow the steps below.
+To use the M-VAS capabilities, you must first log in with OTP ( or added user phone number by VasConfig in init sdk ) and then follow the steps below.
 
 #### 1. otpRegister
+If you have added a user's phone number with VasConfig, ignore this step
 ```sh
  HillaPaySdk.OTP.phoneRegister(activityContext, uid);
 ```
- #### 2. CheckActiveUser
+#### 2. CheckActiveUser
 ```sh
  HillaPaySdk.VAS.checkActiveUser(activityContext, uid, 
        new HillaPayActiveUserListener() {
@@ -201,15 +218,25 @@ The answer to this method is returned in OnActivityResult, which is in the direc
 #### 4. Unsubscribe User
 You can cancel the user contract using the following method.
 ```sh
-HillaPaySdk.VAS.unsubscribeUser(MainActivity.this, uid, new HillaPayUnSubscribeUserListener() {
-                @Override
-                public void onResult(boolean unSubscribe) {
+HillaPaySdk.VAS.unsubscribeUser(MainActivity.this, uid);
+```
 
+#### 4. Report
+You can report user payments with this method.
+
+```sh
+HillaPaySdk.VAS.getReport(MainActivity.this, uid, new HillaPayVasReportListener() {
+                @Override
+                public void onResult(HillaVasReportModel report) {
+                    Toast.makeText(MainActivity.this,
+                            "count: " + report.getCountAmount() +
+                                    "\n total Amount: " + report.getTotalAmount()
+                            , Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
                 public void onFailed(String message, int errorType) {
-                    Toast.makeText(MainActivity.this,  message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "report:" + message, Toast.LENGTH_SHORT).show();
                 }
             });
 ```
