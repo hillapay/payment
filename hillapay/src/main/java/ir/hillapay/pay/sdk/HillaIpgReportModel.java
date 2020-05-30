@@ -5,11 +5,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 
-public class HillaVasReportModel implements Parcelable {
+public class HillaIpgReportModel implements Parcelable {
     private long countAmount;
     private String totalAmount;
 
-    public HillaVasReportModel(long countAmount, String totalAmount) {
+    public HillaIpgReportModel(long countAmount, String totalAmount) {
         this.countAmount = countAmount;
         this.totalAmount = totalAmount;
     }
@@ -49,20 +49,20 @@ public class HillaVasReportModel implements Parcelable {
         dest.writeString(this.totalAmount);
     }
 
-    protected HillaVasReportModel(Parcel in) {
+    protected HillaIpgReportModel(Parcel in) {
         this.countAmount = in.readLong();
         this.totalAmount = in.readString();
     }
 
-    public static final Creator<HillaVasReportModel> CREATOR = new Creator<HillaVasReportModel>() {
+    public static final Creator<HillaIpgReportModel> CREATOR = new Creator<HillaIpgReportModel>() {
         @Override
-        public HillaVasReportModel createFromParcel(Parcel source) {
-            return new HillaVasReportModel(source);
+        public HillaIpgReportModel createFromParcel(Parcel source) {
+            return new HillaIpgReportModel(source);
         }
 
         @Override
-        public HillaVasReportModel[] newArray(int size) {
-            return new HillaVasReportModel[size];
+        public HillaIpgReportModel[] newArray(int size) {
+            return new HillaIpgReportModel[size];
         }
     };
 }

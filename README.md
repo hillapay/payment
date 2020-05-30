@@ -223,16 +223,35 @@ You may cancel the contract of the user by using the following method.
 HillaPaySdk.VAS.unsubscribeUser(MainActivity.this, uid);
 ```
 
-#### 4. Report
-You may get the report of user payments with this method.
+#### 4. IPG Report
+###### 1. Total Report
+You may get the total report of user payments with this method.
 
 ```sh
-HillaPaySdk.VAS.getReport(MainActivity.this, uid, new HillaPayVasReportListener() {
+HillaPaySdk.VAS.getIpgReport(MainActivity.this, uid, new HillaPayIpgReportListener() {
                 @Override
-                public void onResult(HillaVasReportModel report) {
+                public void onResult(HillaIpgReportModel report) {
                     Toast.makeText(MainActivity.this,
                             "count: " + report.getCountAmount() +
                                     "\n total Amount: " + report.getTotalAmount()
+                            , Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFailed(String message, int errorType) {
+                    Toast.makeText(MainActivity.this, "report:" + message, Toast.LENGTH_SHORT).show();
+                }
+            });
+```
+###### 2. Last List Report
+
+You may get The last five reports of user payments with this method.
+```sh
+ HillaPaySdk.getIpgReportLastList(MainActivity.this, uid, new HillaPayIpgReportListListener() {
+                @Override
+                public void onResult(List<HillaIpgLastReportModel> report) {
+                    Toast.makeText(MainActivity.this,
+                            "count: " + report.size()
                             , Toast.LENGTH_SHORT).show();
                 }
 

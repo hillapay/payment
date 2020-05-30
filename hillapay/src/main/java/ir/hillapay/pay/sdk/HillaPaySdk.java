@@ -4,11 +4,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ir.hillapay.core.publicmodel.CoreDirectdebitPayModel;
+import ir.hillapay.core.publicmodel.CoreHillaIpgLastReportModel;
 import ir.hillapay.core.publicmodel.CoreHillaVasReportModel;
 import ir.hillapay.core.publicmodel.CoreIpgCallbackModel;
 import ir.hillapay.core.publicmodel.CoreTransactionVerifyModel;
 import ir.hillapay.core.sdk.CoreHillaPayActiveUserListener;
+import ir.hillapay.core.sdk.CoreHillaPayIpgReportListListener;
 import ir.hillapay.core.sdk.CoreHillaPaySdk;
 import ir.hillapay.core.sdk.CoreHillaPaySdkListener;
 import ir.hillapay.core.sdk.CoreHillaPayVasReportListener;
@@ -90,6 +95,52 @@ public class HillaPaySdk {
                 ipgCallbackModel.getReturnRrn(),
                 ipgCallbackModel.isSuccess());
         CoreHillaPaySdk.coreVerify(context, uid, ipgModel);
+    }
+
+    public static void getIpgReport(Activity context, String uid, final HillaPayIpgReportListener listener) {
+        CoreHillaPaySdk.coreGetIpgReport(context, uid, new CoreHillaPayVasReportListener() {
+            @Override
+            public void onResult(CoreHillaVasReportModel hillaVasReportModel) {
+                HillaIpgReportModel reportModel = new HillaIpgReportModel(
+                        hillaVasReportModel.countAmount,
+                        hillaVasReportModel.totalAmount);
+                listener.onResult(reportModel);
+            }
+
+            @Override
+            public void onFailed(String s, int i) {
+                listener.onFailed(s, i);
+            }
+        });
+    }
+
+    public static void getIpgReportLastList(Activity context, String uid, final HillaPayIpgReportListListener listener) {
+        CoreHillaPaySdk.coreGetIpgReportList(context, uid, new CoreHillaPayIpgReportListListener() {
+
+
+            @Override
+            public void onResult(List<CoreHillaIpgLastReportModel> reportList) {
+
+                List<HillaIpgLastReportModel> lstReport=new ArrayList<>();
+                if(reportList!=null)
+                for (int i = 0; i < reportList.size(); i++) {
+                    HillaIpgLastReportModel reportModel = new HillaIpgLastReportModel(
+                           reportList.get(i).amount,
+                            reportList.get(i).sku!=null ?reportList.get(i).sku:"",
+                            reportList.get(i).orderId!=null ?reportList.get(i).orderId:"",
+                            reportList.get(i).transactionId!=null ?reportList.get(i).transactionId:"",
+                            reportList.get(i).timestamp!=null ?reportList.get(i).timestamp:""
+                            );
+                    lstReport.add(reportModel);
+                }
+                listener.onResult(lstReport);
+            }
+
+            @Override
+            public void onFailed(String s, int i) {
+                listener.onFailed(s, i);
+            }
+        });
     }
 
     public static void getSdkResult(int requestCode, int resultCode, Intent data, final HillaPaySdkListener sdkListener) {
@@ -202,22 +253,6 @@ public class HillaPaySdk {
             CoreHillaPaySdk.CoreVAS.coreCreatePayman(context, uid);
         }
 
-        public static void getReport(Activity context, String uid, final HillaPayVasReportListener listener) {
-            CoreHillaPaySdk.CoreVAS.coreGetReport(context, uid, new CoreHillaPayVasReportListener() {
-                @Override
-                public void onResult(CoreHillaVasReportModel hillaVasReportModel) {
-                    HillaVasReportModel reportModel = new HillaVasReportModel(
-                            hillaVasReportModel.countAmount,
-                            hillaVasReportModel.totalAmount);
-                    listener.onResult(reportModel);
-                }
-
-                @Override
-                public void onFailed(String s, int i) {
-
-                }
-            });
-        }
     }
 
     public static class OTP {

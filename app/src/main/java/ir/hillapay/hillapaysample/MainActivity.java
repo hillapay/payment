@@ -13,15 +13,18 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
 import ir.hillapay.pay.sdk.DirectdebitPayModel;
 import ir.hillapay.pay.sdk.HillaErrorType;
+import ir.hillapay.pay.sdk.HillaIpgLastReportModel;
 import ir.hillapay.pay.sdk.HillaPayActiveUserListener;
+import ir.hillapay.pay.sdk.HillaPayIpgReportListListener;
 import ir.hillapay.pay.sdk.HillaPaySdk;
-import ir.hillapay.pay.sdk.HillaPayUnSubscribeUserListener;
-import ir.hillapay.pay.sdk.HillaPayVasReportListener;
+import ir.hillapay.pay.sdk.HillaPayIpgReportListener;
 import ir.hillapay.pay.sdk.HillaPaymentConfig;
 import ir.hillapay.pay.sdk.HillaVasActiveType;
-import ir.hillapay.pay.sdk.HillaVasReportModel;
+import ir.hillapay.pay.sdk.HillaIpgReportModel;
 import ir.hillapay.pay.sdk.IpgCallbackModel;
 import ir.hillapay.pay.sdk.HillaPaySdkListener;
 import ir.hillapay.pay.sdk.TransactionVerifyModel;
@@ -153,12 +156,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if (v.getId() == R.id.btnUnsubscribUserVas)
             HillaPaySdk.VAS.unsubscribeUser(MainActivity.this, uid);
         else if (v.getId() == R.id.btnReportUserVas) {
-            HillaPaySdk.VAS.getReport(MainActivity.this, uid, new HillaPayVasReportListener() {
+            HillaPaySdk.getIpgReportLastList(MainActivity.this, uid, new HillaPayIpgReportListListener() {
                 @Override
-                public void onResult(HillaVasReportModel report) {
+                public void onResult(List<HillaIpgLastReportModel> report) {
                     Toast.makeText(MainActivity.this,
-                            "count: " + report.getCountAmount() +
-                                    "\n total Amount: " + report.getTotalAmount()
+                            "count: " + report.size()
                             , Toast.LENGTH_SHORT).show();
                 }
 

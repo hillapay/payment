@@ -1,8 +1,8 @@
 package ir.hillapay.pay.sdk;
 
-public interface HillaPayVasReportListener {
+public interface HillaPayIpgReportListener {
 
-    void onResult(HillaVasReportModel report);
+    void onResult(HillaIpgReportModel report);
 
     void onFailed(String message, @HillaErrorType int errorType);
 
