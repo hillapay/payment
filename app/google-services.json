@@ -1,0 +1,207 @@
+{
+  "project_info": {
+    "project_number": "886055503015",
+    "firebase_url": "https://test-3a337.firebaseio.com",
+    "project_id": "test-3a337",
+    "storage_bucket": "test-3a337.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886055503015:android:d661041be24530ad",
+        "android_client_info": {
+          "package_name": "com.example.flutter_app_bottom_bar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886055503015-tn6cvbofm6mk5gi0autebd66tk5hn90j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_app_bottom_bar",
+            "certificate_hash": "5663810d48ed45cd04c5c1e09d98eadc17fc6775"
+          }
+        },
+        {
+          "client_id": "886055503015-58j5k1dt8g2fmp9uqd97cuh2jbskp804.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGkou9IOmpA72JAl3I7sx8irZAb8M-aSM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886055503015-58j5k1dt8g2fmp9uqd97cuh2jbskp804.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "886055503015-hs8g4i26gaq6bmu6859pu8v3crqsd8jt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ir.flutter.bottombartest"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886055503015:android:038012ce2d2196a4",
+        "android_client_info": {
+          "package_name": "com.gamenet.game_net"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886055503015-eqsro2ald5b86thujh7leu9gnbgp3sqn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gamenet.game_net",
+            "certificate_hash": "5663810d48ed45cd04c5c1e09d98eadc17fc6775"
+          }
+        },
+        {
+          "client_id": "886055503015-58j5k1dt8g2fmp9uqd97cuh2jbskp804.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGkou9IOmpA72JAl3I7sx8irZAb8M-aSM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886055503015-58j5k1dt8g2fmp9uqd97cuh2jbskp804.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "886055503015-hs8g4i26gaq6bmu6859pu8v3crqsd8jt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ir.flutter.bottombartest"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886055503015:android:62e37a5fb04017b5",
+        "android_client_info": {
+          "package_name": "com.test.flutter_app_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886055503015-58j5k1dt8g2fmp9uqd97cuh2jbskp804.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGkou9IOmpA72JAl3I7sx8irZAb8M-aSM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886055503015-58j5k1dt8g2fmp9uqd97cuh2jbskp804.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "886055503015-hs8g4i26gaq6bmu6859pu8v3crqsd8jt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ir.flutter.bottombartest"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886055503015:android:7ea0f27192f94df1",
+        "android_client_info": {
+          "package_name": "ir.flutter.bottombartest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886055503015-58j5k1dt8g2fmp9uqd97cuh2jbskp804.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGkou9IOmpA72JAl3I7sx8irZAb8M-aSM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886055503015-58j5k1dt8g2fmp9uqd97cuh2jbskp804.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "886055503015-hs8g4i26gaq6bmu6859pu8v3crqsd8jt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ir.flutter.bottombartest"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886055503015:android:7b7b3d6c90df34a552c782",
+        "android_client_info": {
+          "package_name": "ir.hillapay.hillapaysample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886055503015-58j5k1dt8g2fmp9uqd97cuh2jbskp804.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGkou9IOmpA72JAl3I7sx8irZAb8M-aSM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886055503015-58j5k1dt8g2fmp9uqd97cuh2jbskp804.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "886055503015-hs8g4i26gaq6bmu6859pu8v3crqsd8jt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ir.flutter.bottombartest"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -20,13 +20,18 @@ import ir.hillapay.pay.sdk.HillaErrorType;
 import ir.hillapay.pay.sdk.HillaIpgLastReportModel;
 import ir.hillapay.pay.sdk.HillaPayActiveUserListener;
 import ir.hillapay.pay.sdk.HillaPayIpgReportListListener;
+import ir.hillapay.pay.sdk.HillaPayPublishInfoListener;
 import ir.hillapay.pay.sdk.HillaPaySdk;
 import ir.hillapay.pay.sdk.HillaPayIpgReportListener;
+import ir.hillapay.pay.sdk.HillaPayStorageListener;
 import ir.hillapay.pay.sdk.HillaPaymentConfig;
 import ir.hillapay.pay.sdk.HillaVasActiveType;
 import ir.hillapay.pay.sdk.HillaIpgReportModel;
 import ir.hillapay.pay.sdk.IpgCallbackModel;
 import ir.hillapay.pay.sdk.HillaPaySdkListener;
+import ir.hillapay.pay.sdk.PublishDeviceModel;
+import ir.hillapay.pay.sdk.PublishModel;
+import ir.hillapay.pay.sdk.StorageModel;
 import ir.hillapay.pay.sdk.TransactionVerifyModel;
 import ir.hillapay.pay.sdk.VasConfig;
 
@@ -59,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        uid = UUID.randomUUID().toString();
         uid = "1";
 
-        VasConfig vasConfig =new VasConfig.Builder()
+        VasConfig vasConfig = new VasConfig.Builder()
                 .setUserPhoneNumber("09352830038")
                 .build();
 
@@ -135,9 +140,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.btnPayment)
-            payment();
-        else if (v.getId() == R.id.btnCheckActiveUser)
+        if (v.getId() == R.id.btnPayment) {
+                        payment();
+        } else if (v.getId() == R.id.btnCheckActiveUser)
             HillaPaySdk.VAS.checkActiveUser(MainActivity.this, uid, new HillaPayActiveUserListener() {
                 @Override
                 public void onResult(@HillaVasActiveType int active) {

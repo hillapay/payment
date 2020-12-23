@@ -32,7 +32,7 @@ Let's have a look at it.
 ##### Add the dependency
 ```groovy
  dependencies {
-            implementation 'com.github.hillapay:payment:v1.4.3'
+            implementation 'com.github.hillapay:payment:v1.4.4'
    }
 ```
 #### 2. Add API key in build.gradle(app)
@@ -262,6 +262,100 @@ You may get The last five reports of user payments with this method.
             });
 ```
 
+#### Storage
+You can use server storage space. This feature is like SharedPreferences with the difference that it is online.
+You can use this service below:
+
+###### 1.Insert item
+
+You can add an item to storage. 
+
+```sh
+ HillaPaySdk.Storage.insertItem(MainActivity.this, uid, "sampleKey", "sampleValue", "mobile", "optionalDomainName", "expire", new HillaPayStorageListener.InsertListener() {
+                @Override
+                public void onResult(boolean successInsert, String storageId) {
+                    
+                }
+
+                @Override
+                public void onFailed(String message, int errorType) {
+
+                }
+            });
+```
+>optionalDomainName: Choose a name for the domain.
+>expire: When the expiration date, the storage item will be cleared.
+
+###### 2.Update Item
+You can update the item in storage. 
+
+```sh
+ HillaPaySdk.Storage.updateItem(MainActivity.this, uid, "storageId", "sampleKey", "sampleValue", "mobile", "optionalDomainName", "1000",
+                    new HillaPayStorageListener.UpdateListener() {
+                        @Override
+                        public void onResult(boolean successUpdate, String storageId) {
+                            
+                        }
+
+                        @Override
+                        public void onFailed(String message, int errorType) {
+
+                        }
+                    });
+```
+>storageId: This is storage id; get this id from insert service or get storage service
+
+
+###### 3.Delete item
+You can delete an item in storage. 
+
+```sh
+HillaPaySdk.Storage.destroyItemStorage(MainActivity.this, uid, "storageId", new HillaPayStorageListener.DestroyListener() {
+                @Override
+                public void onResult(boolean successDestroy) {
+
+                }
+
+                @Override
+                public void onFailed(String message, int errorType) {
+
+                }
+            });
+```
+
+###### 4.Get one storage item
+you can get one item with a key.
+
+```sh
+HillaPaySdk.Storage.getItemStorage(MainActivity, uid, "sampleKey", new HillaPayStorageListener.ItemListener() {
+                @Override
+                public void onResult(StorageModel storageModel) {
+
+                }
+
+                @Override
+                public void onFailed(String message, int errorType) {
+
+                }
+            });
+```
+
+###### 5.Get all storage items
+you can get all items in your storage.
+
+```sh
+HillaPaySdk.Storage.getAllItemsStorage(MainActivity.this, uid, new HillaPayStorageListener.ItemsListener() {
+                @Override
+                public void onResult(List<StorageModel> storageModels) {
+                    
+                }
+
+                @Override
+                public void onFailed(String message, int errorType) {
+
+                }
+            });
+```
 
 ### More option in SDK
 
@@ -285,6 +379,36 @@ HillaPaySdk.closeTrack(activityContext, uid);
 ```sh
 HillaPaySdk.track(activityContext, uid,action, description);
 ```
+#### 4. Publish Service
+This service is a tool to manage your application in different instances. For example, you can use this service to control whether your app is free or not, or even its language.
+
+
+```sh
+ HillaPaySdk.getPublishInfo(MainActivity.this, uid, new HillaPayPublishInfoListener() {
+                @Override
+                public void onResult(PublishModel publishModel) {
+                    PublishDeviceModel publishAndroidModel = publishModel.getA();
+                    String hasActive = publishAndroidModel.getHa();
+                    String hasPayment = publishAndroidModel.getHp();
+                    String language = publishAndroidModel.getLg();
+                    String description = publishAndroidModel.getDescription();
+
+
+                }
+
+                @Override
+                public void onFailed(String message, int errorType) {
+
+                }
+            });
+```
+>**getA():** get android publish info
+>**publishAndroidModel.getHa():** get publish active status 
+>**publishAndroidModel.getHp():** get active payment status 
+>**publishAndroidModel.getLg():** get publish language
+>**publishAndroidModel.getDescription():** get publish description
+
+
 #### 4. Change sdk them
 
 ```sh

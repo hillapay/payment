@@ -7,15 +7,21 @@ import android.content.Intent;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 import ir.hillapay.core.publicmodel.CoreDirectdebitPayModel;
 import ir.hillapay.core.publicmodel.CoreHillaIpgLastReportModel;
 import ir.hillapay.core.publicmodel.CoreHillaVasReportModel;
 import ir.hillapay.core.publicmodel.CoreIpgCallbackModel;
+import ir.hillapay.core.publicmodel.CorePublishModel;
+import ir.hillapay.core.publicmodel.CoreStorageModel;
 import ir.hillapay.core.publicmodel.CoreTransactionVerifyModel;
 import ir.hillapay.core.sdk.CoreHillaPayActiveUserListener;
 import ir.hillapay.core.sdk.CoreHillaPayIpgReportListListener;
+import ir.hillapay.core.sdk.CoreHillaPayPublishInfoListener;
 import ir.hillapay.core.sdk.CoreHillaPaySdk;
 import ir.hillapay.core.sdk.CoreHillaPaySdkListener;
+import ir.hillapay.core.sdk.CoreHillaPayStorageListener;
 import ir.hillapay.core.sdk.CoreHillaPayVasReportListener;
 import ir.hillapay.core.sdk.CorePaymentConfig;
 import ir.hillapay.core.sdk.CoreVasConfig;
@@ -121,18 +127,18 @@ public class HillaPaySdk {
             @Override
             public void onResult(List<CoreHillaIpgLastReportModel> reportList) {
 
-                List<HillaIpgLastReportModel> lstReport=new ArrayList<>();
-                if(reportList!=null)
-                for (int i = 0; i < reportList.size(); i++) {
-                    HillaIpgLastReportModel reportModel = new HillaIpgLastReportModel(
-                           reportList.get(i).amount,
-                            reportList.get(i).sku!=null ?reportList.get(i).sku:"",
-                            reportList.get(i).orderId!=null ?reportList.get(i).orderId:"",
-                            reportList.get(i).transactionId!=null ?reportList.get(i).transactionId:"",
-                            reportList.get(i).timestamp!=null ?reportList.get(i).timestamp:""
-                            );
-                    lstReport.add(reportModel);
-                }
+                List<HillaIpgLastReportModel> lstReport = new ArrayList<>();
+                if (reportList != null)
+                    for (int i = 0; i < reportList.size(); i++) {
+                        HillaIpgLastReportModel reportModel = new HillaIpgLastReportModel(
+                                reportList.get(i).amount,
+                                reportList.get(i).sku != null ? reportList.get(i).sku : "",
+                                reportList.get(i).orderId != null ? reportList.get(i).orderId : "",
+                                reportList.get(i).transactionId != null ? reportList.get(i).transactionId : "",
+                                reportList.get(i).timestamp != null ? reportList.get(i).timestamp : ""
+                        );
+                        lstReport.add(reportModel);
+                    }
                 listener.onResult(lstReport);
             }
 
@@ -228,6 +234,29 @@ public class HillaPaySdk {
         });
     }
 
+    public static void getPublishInfo(Activity context, String uid, final HillaPayPublishInfoListener listener) {
+        CoreHillaPaySdk.coreGetPublishInfo(context, uid, new CoreHillaPayPublishInfoListener() {
+            @Override
+            public void onResult(CorePublishModel corePublishModel) {
+
+                PublishDeviceModel a = new PublishDeviceModel(corePublishModel.a.hp,
+                        corePublishModel.a.ha, corePublishModel.a.lg, corePublishModel.a.description,
+                        corePublishModel.a.status);
+                PublishDeviceModel i = new PublishDeviceModel(corePublishModel.i.hp,
+                        corePublishModel.i.ha, corePublishModel.i.lg, corePublishModel.i.description,
+                        corePublishModel.i.status);
+
+                PublishModel publishModel = new PublishModel(a, i);
+                listener.onResult(publishModel);
+            }
+
+            @Override
+            public void onFailed(String s, int i) {
+                listener.onFailed(s, i);
+            }
+        });
+    }
+
     public static class VAS {
 
         public static void checkActiveUser(Activity context, String uid, final HillaPayActiveUserListener listener) {
@@ -259,6 +288,109 @@ public class HillaPaySdk {
         public static void phoneRegister(Activity context, String uid) {
             CoreHillaPaySdk.CoreOTP.coreRegister(context, uid);
         }
+    }
+
+
+    public static class Storage {
+
+        public static void insertItem(final Activity context, String uid,
+                                      String key, String value, String mobile, String domain, String expire,
+                                      final HillaPayStorageListener.InsertListener listener) {
+
+
+            CoreHillaPaySdk.CoreStorage.insertItem(context, uid, key, value, mobile, domain, expire, new CoreHillaPayStorageListener.InsertListener() {
+                @Override
+                public void onResult(boolean b, String s) {
+                    listener.onResult(b, s);
+                }
+
+                @Override
+                public void onFailed(String s, int i) {
+                    listener.onFailed(s, i);
+                }
+            });
+        }
+
+        public static void updateItem(final Activity context, String uid, String storageId,
+                                      String key, String value, String mobile, String domain, String expire,
+                                      final HillaPayStorageListener.UpdateListener listener) {
+            CoreHillaPaySdk.CoreStorage.updateItem(context, uid, storageId, key, value, mobile, domain, expire, new CoreHillaPayStorageListener.UpdateListener() {
+                @Override
+                public void onResult(boolean b, String s) {
+                    listener.onResult(b, s);
+                }
+
+                @Override
+                public void onFailed(String s, int i) {
+                    listener.onFailed(s, i);
+                }
+            });
+        }
+
+        public static void destroyItemStorage(final Activity context, String uid, String storageId,
+                                              final HillaPayStorageListener.DestroyListener listener) {
+            CoreHillaPaySdk.CoreStorage.destroyItemStorage(context, uid, storageId, new CoreHillaPayStorageListener.DestroyListener() {
+                @Override
+                public void onResult(boolean b) {
+
+                }
+
+                @Override
+                public void onFailed(String s, int i) {
+                    listener.onFailed(s, i);
+                }
+            });
+        }
+
+        public static void getAllItemsStorage(final Activity context, String uid,
+                                              final HillaPayStorageListener.ItemsListener listener) {
+            CoreHillaPaySdk.CoreStorage.getAllItemsStorage(context, uid, new CoreHillaPayStorageListener.ItemsListener() {
+                @Override
+                public void onResult(List<CoreStorageModel> list) {
+
+                    List<StorageModel> listOfStorage = new ArrayList<>();
+                    for (int i = 0; i < list.size(); i++) {
+                        CoreStorageModel storageItem = list.get(i);
+                        StorageModel storageModel = new StorageModel(
+                                storageItem.packageName, storageItem.packageVersion, storageItem.cid,
+                                storageItem.storageId, storageItem.expire, storageItem.timestamp,
+                                storageItem.domain, storageItem.value, storageItem.name);
+                        listOfStorage.add(storageModel);
+                    }
+
+                    listener.onResult(listOfStorage);
+
+                }
+
+                @Override
+                public void onFailed(String s, int i) {
+                    listener.onFailed(s, i);
+                }
+            });
+
+        }
+
+        public static void getItemStorage(final Activity context, String uid, String itemKey,
+                                          final HillaPayStorageListener.ItemListener listener) {
+            CoreHillaPaySdk.CoreStorage.getItemStorage(context, uid, itemKey, new CoreHillaPayStorageListener.ItemListener() {
+                @Override
+                public void onResult(CoreStorageModel storageItem) {
+
+                    StorageModel storageModel = new StorageModel(
+                            storageItem.packageName, storageItem.packageVersion, storageItem.cid,
+                            storageItem.storageId, storageItem.expire, storageItem.timestamp,
+                            storageItem.domain, storageItem.value, storageItem.name);
+
+                    listener.onResult(storageModel);
+                }
+
+                @Override
+                public void onFailed(String s, int i) {
+                    listener.onFailed(s, i);
+                }
+            });
+        }
+
     }
 
 
