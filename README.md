@@ -32,7 +32,7 @@ Let's have a look at it.
 ##### Add the dependency
 ```groovy
  dependencies {
-            implementation 'com.github.hillapay:payment:v1.4.4'
+            implementation 'com.github.hillapay:payment:v1.4.5'
    }
 ```
 #### 2. Add API key in build.gradle(app)
